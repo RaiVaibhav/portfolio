@@ -55,11 +55,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     firstName: site.firstName,
     lastName: site.lastName,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${site.firstName} ${site.lastName} — ${site.role}` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.firstName} ${site.lastName} — ${site.role}`,
     description: site.metaDescription,
+    images: ["/og.png"],
   },
 };
 

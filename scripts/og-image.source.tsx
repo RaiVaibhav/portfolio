@@ -73,3 +73,16 @@ export default function OgImage() {
     size,
   );
 }
+
+/*
+ * NOT part of the build. Next's file-based metadata convention overrides an
+ * explicit openGraph.images, and under `output: export` it emits an
+ * extensionless `out/opengraph-image` that static hosts serve with the wrong
+ * content type, so og:image ends up broken on LinkedIn and Slack.
+ *
+ * The committed image lives at public/og.png. To regenerate it:
+ *   1. cp scripts/og-image.source.tsx app/opengraph-image.tsx
+ *   2. npm run build
+ *   3. cp out/opengraph-image public/og.png
+ *   4. rm app/opengraph-image.tsx && npm run build
+ */

@@ -48,7 +48,7 @@ export const experience: Job[] = [
   },
   {
     company: "Milky Way AI",
-    role: "Freelance Frontend Developer",
+    role: "Freelance Frontend Engineer",
     years: "2022",
     location: "Remote, India",
     bullets: [
@@ -60,7 +60,7 @@ export const experience: Job[] = [
     url: "https://wayground.com/",
     urlLabel: "Wayground",
     urlNote: "Quizizz, renamed since I was there",
-    role: "Freelance Frontend Developer",
+    role: "Freelance Frontend Engineer",
     years: "2021 — 2022",
     location: "Remote",
     bullets: [
@@ -71,7 +71,7 @@ export const experience: Job[] = [
   },
   {
     company: "Klinify",
-    role: "Frontend Developer",
+    role: "Frontend Engineer",
     years: "2019 — 2021",
     location: "Remote, India",
     bullets: [
@@ -86,7 +86,7 @@ export const experience: Job[] = [
     url: "https://www.appknox.com/",
     urlLabel: "Appknox",
     urlNote: "Mobile app security scanning",
-    role: "Frontend Developer",
+    role: "Frontend Engineer",
     years: "2019",
     location: "Bangalore, India",
     bullets: [
@@ -100,7 +100,7 @@ export const experience: Job[] = [
     url: "https://www.solarwinds.com/it-incident-response-software",
     urlLabel: "SolarWinds Incident Response",
     urlNote: "Squadcast, acquired by SolarWinds",
-    role: "Software Developer Intern",
+    role: "Software Engineer Intern",
     years: "2018 — 2019",
     location: "Bangalore, India",
     bullets: [
