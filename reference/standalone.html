@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vaibhav Kumar Rai, Senior Software Engineer (Frontend). 7+ years on React, Next.js, TypeScript and FastAPI. Design systems, data-heavy interfaces, and large frontend migrations.">
+  <title>Vaibhav Kumar Rai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<script>document.documentElement.classList.add("js");</script>
+<style>
+/* ── tokens ───────────────────────────────────────────────────────────────
+   Dark-first. :root carries the full dark palette; the light palette is
+   redefined in two places so both the system default and an explicit
+   choice resolve correctly.                                              */
+:root {
+  --ground:    #0D1014;
+  --surface:   #141920;
+  --surface-2: #1B2129;
+  --line:      #262E38;
+  --line-soft: #1B222B;
+  --ink:       #E4E8EC;
+  --ink-2:     #A8B2BE;
+  --ink-3:     #7B8794;
+  --brass:     #D6A24A;
+  --brass-dim: #8A6C33;
+  --brass-wash: rgba(214,162,74,.13);
+  --patina:    #4FB3A5;
+  --patina-wash: rgba(79,179,165,.14);
+  --shadow: 0 1px 0 rgba(255,255,255,.03) inset;
+
+  --f-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-body: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --rail: 11.5rem;
+  --gut: clamp(1.25rem, 4vw, 3rem);
+  --maxw: 68rem;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground:    #E9EAE6;
+    --surface:   #F3F4F0;
+    --surface-2: #FBFBF9;
+    --line:      #D0D4CB;
+    --line-soft: #DDE0D8;
+    --ink:       #14181D;
+    --ink-2:     #414B55;
+    --ink-3:     #5C656E;
+    --brass:     #8A5D12;
+    --brass-dim: #B08A3E;
+    --brass-wash: rgba(138,93,18,.10);
+    --patina:    #16665E;
+    --patina-wash: rgba(22,102,94,.11);
+    --shadow: 0 1px 0 rgba(0,0,0,.02) inset;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --ground:    #E9EAE6;
+  --surface:   #F3F4F0;
+  --surface-2: #FBFBF9;
+  --line:      #D0D4CB;
+  --line-soft: #DDE0D8;
+  --ink:       #14181D;
+  --ink-2:     #414B55;
+  --ink-3:     #5C656E;
+  --brass:     #8A5D12;
+  --brass-dim: #B08A3E;
+  --brass-wash: rgba(138,93,18,.10);
+  --patina:    #16665E;
+  --patina-wash: rgba(22,102,94,.11);
+  --shadow: 0 1px 0 rgba(0,0,0,.02) inset;
+  color-scheme: light;
+}
+
+/* ── base ──────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: clamp(1rem, .96rem + .2vw, 1.075rem);
+  line-height: 1.62;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--f-display);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.022em;
+  text-wrap: balance;
+  margin: 0;
+}
+p { margin: 0; }
+
+a { color: inherit; text-decoration-color: var(--brass-dim); text-underline-offset: .22em; }
+a:hover { text-decoration-color: var(--brass); }
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gut); }
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 50;
+  background: var(--surface-2); color: var(--ink);
+  padding: .7rem 1rem; font-family: var(--f-mono); font-size: .8rem;
+  border: 1px solid var(--line);
+}
+.skip:focus { left: .5rem; top: .5rem; }
+
+/* mono utility label ------------------------------------------------- */
+.mono {
+  font-family: var(--f-mono);
+  font-size: .74rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* tick rule: major brass ticks every 60px over minor ticks every 12px -- */
+.rule {
+  height: 12px;
+  background:
+    repeating-linear-gradient(90deg, var(--brass-dim) 0 1px, transparent 1px 60px) left bottom / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 12px) left bottom / 100% 6px no-repeat;
+  opacity: .85;
+}
+
+/* ── header ────────────────────────────────────────────────────────────── */
+.site {
+  position: sticky; top: 0; z-index: 30;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.bar { display: flex; align-items: center; gap: 1rem; height: 3.5rem; }
+.mark {
+  font-family: var(--f-display); font-weight: 900; font-size: .95rem;
+  letter-spacing: .12em; text-decoration: none; color: var(--ink);
+}
+.mark span { color: var(--brass); }
+.site nav { margin-left: auto; display: flex; gap: 1.35rem; }
+.site nav a {
+  font-family: var(--f-mono); font-size: .76rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+}
+.site nav a:hover { color: var(--ink); }
+.theme {
+  font-family: var(--f-mono); font-size: .72rem; letter-spacing: .08em;
+  text-transform: uppercase;
+  background: transparent; color: var(--ink-3);
+  border: 1px solid var(--line); padding: .35rem .6rem; cursor: pointer;
+  border-radius: 2px;
+}
+.theme:hover { color: var(--ink); border-color: var(--brass-dim); }
+
+/* ── hero ──────────────────────────────────────────────────────────────── */
+.hero { position: relative; padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, var(--line-soft) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg,  var(--line-soft) 0 1px, transparent 1px 72px);
+  -webkit-mask-image: radial-gradient(125% 85% at 10% -5%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(125% 85% at 10% -5%, #000 0%, transparent 72%);
+  opacity: .5;
+}
+.hero > * { position: relative; }
+
+.eyebrow { display: flex; flex-wrap: wrap; gap: .55rem .9rem; align-items: center; margin-bottom: 1.4rem; }
+.eyebrow .sep { color: var(--brass-dim); }
+
+h1.name {
+  font-size: clamp(2.9rem, 11.5vw, 7.5rem);
+  font-weight: 900;
+  letter-spacing: -.045em;
+  line-height: .88;
+  margin-bottom: clamp(1.5rem, 4vw, 2.4rem);
+}
+h1.name .l2 { display: block; color: var(--ink-2); }
+
+.thesis {
+  font-size: clamp(1.3rem, 1.05rem + 1.15vw, 2rem);
+  line-height: 1.32;
+  max-width: 26ch;
+  letter-spacing: -.012em;
+  margin-bottom: 1.5rem;
+}
+.thesis em { font-style: italic; color: var(--brass); }
+.sub { color: var(--ink-2); max-width: 56ch; margin-bottom: 2rem; text-wrap: pretty; }
+
+.status {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: var(--f-mono); font-size: .74rem; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--patina);
+  background: var(--patina-wash);
+  border: 1px solid color-mix(in srgb, var(--patina) 35%, transparent);
+  padding: .4rem .75rem; border-radius: 2px; margin-bottom: 2.2rem;
+}
+.dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--patina); flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .dot { animation: pulse 2.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+}
+
+.links { display: flex; flex-wrap: wrap; gap: .6rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--f-mono); font-size: .78rem; letter-spacing: .05em;
+  padding: .6rem 1rem; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); text-decoration: none;
+  border-radius: 2px; box-shadow: var(--shadow);
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.btn:hover { border-color: var(--brass); color: var(--brass); }
+.btn.primary { background: var(--brass); color: var(--ground); border-color: var(--brass); font-weight: 500; }
+.btn.primary:hover { background: transparent; color: var(--brass); }
+
+/* ── section scaffolding ───────────────────────────────────────────────── */
+.sec { padding-block: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--line-soft); }
+.sec-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+.sec-head .tag { display: flex; align-items: center; gap: .6rem; flex: none; }
+.sec-head .tag::before {
+  content: ""; width: .5rem; height: .5rem; background: var(--brass); flex: none;
+}
+.sec-head .fill { height: 1px; background: var(--line); flex: 1; }
+.sec-head .count { flex: none; }
+
+/* two-column spec grid ------------------------------------------------ */
+.spec { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 1.5rem 2.5rem; }
+@media (max-width: 800px) { .spec { grid-template-columns: 1fr; gap: .7rem; } }
+
+/* ── focus / capabilities ──────────────────────────────────────────────── */
+.caps { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0; border-top: 1px solid var(--line); }
+.caps .cap { padding: 1.7rem 0 1.9rem; border-bottom: 1px solid var(--line); }
+.caps .cap:nth-child(odd) { padding-right: 2.25rem; border-right: 1px solid var(--line); }
+.caps .cap:nth-child(even) { padding-left: 2.25rem; }
+.cap h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: .8rem; letter-spacing: -.012em; }
+.cap p { color: var(--ink-2); font-size: .97rem; line-height: 1.6; max-width: 46ch; }
+.cap .stat {
+  display: block; font-family: var(--f-mono); font-size: .74rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--brass); margin-bottom: .7rem;
+}
+@media (max-width: 800px) {
+  .caps { grid-template-columns: 1fr; }
+  .caps .cap, .caps .cap:nth-child(odd), .caps .cap:nth-child(even) {
+    padding: 1.4rem 0 1.5rem; border-right: none;
+  }
+}
+
+/* ── experience ────────────────────────────────────────────────────────── */
+.job { border-top: 1px solid var(--line-soft); padding-block: 2rem; }
+.job:first-of-type { border-top: 1px solid var(--line); }
+.job-rail { display: flex; flex-direction: column; gap: .3rem; }
+.job-rail .yr { color: var(--ink-2); font-family: var(--f-mono); font-size: .8rem; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.job:hover .job-rail .yr { color: var(--brass); }
+.job-rail .loc { font-family: var(--f-mono); font-size: .72rem; color: var(--ink-3); letter-spacing: .04em; }
+.job h3 { font-size: clamp(1.35rem, 1.15rem + .6vw, 1.7rem); font-weight: 800; }
+.job .role { font-family: var(--f-mono); font-size: .82rem; color: var(--brass); letter-spacing: .03em; margin-top: .45rem; }
+.job .note { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); margin-top: .3rem; letter-spacing: .02em; }
+.job ul { list-style: none; padding: 0; margin: 1.05rem 0 0; display: flex; flex-direction: column; gap: .7rem; }
+.job li { position: relative; padding-left: 1.15rem; color: var(--ink-2); max-width: 66ch; }
+.job li::before {
+  content: ""; position: absolute; left: 0; top: .68em;
+  width: .38rem; height: 1px; background: var(--brass-dim);
+}
+.job li b { color: var(--ink); font-weight: 500; font-family: var(--f-body); }
+
+.shift {
+  display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+  font-family: var(--f-mono); font-size: .76rem; letter-spacing: .03em;
+  background: var(--brass-wash); color: var(--brass);
+  border-left: 2px solid var(--brass); padding: .4rem .7rem; margin-top: 1.05rem;
+}
+.shift .to { opacity: .55; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1.05rem; }
+.chip {
+  font-family: var(--f-mono); font-size: .7rem; letter-spacing: .04em;
+  color: var(--ink-3); border: 1px solid var(--line);
+  padding: .22rem .5rem; border-radius: 2px;
+}
+.job:hover .chip { border-color: var(--line); color: var(--ink-2); }
+
+.sub-block { margin-top: 1.4rem; padding-left: 1rem; border-left: 1px solid var(--line); }
+.sub-block > .mono { color: var(--ink-2); margin-bottom: .55rem; display: block; }
+
+.proj { border-top: 1px solid var(--line-soft); padding-block: 1.9rem; }
+.proj:first-of-type { border-top: 1px solid var(--line); }
+.proj h3 { font-size: 1.32rem; font-weight: 800; }
+.proj h3 a { text-decoration: none; }
+.proj h3 a:hover { color: var(--brass); }
+.proj p { color: var(--ink-2); margin-top: .6rem; max-width: 62ch; }
+.proj .kind { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--brass); }
+.proj .rail-links { display: flex; flex-direction: column; gap: .3rem; margin-top: .5rem; }
+.proj .rail-links a { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); letter-spacing: .03em; }
+.proj .rail-links a:hover { color: var(--brass); }
+.proj code { font-family: var(--f-mono); font-size: .86em; color: var(--ink); background: var(--surface); border: 1px solid var(--line); padding: .05em .35em; border-radius: 2px; }
+/* narrow: the project rail folds into a single eyebrow line above the title */
+@media (max-width: 800px) {
+  .proj .job-rail { flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: .25rem 1rem; }
+  .proj .rail-links { flex-direction: row; flex-wrap: wrap; gap: 1rem; margin-top: 0; }
+}
+
+/* ── toolkit / education spec rows ─────────────────────────────────────── */
+.row { display: grid; grid-template-columns: var(--rail) minmax(0,1fr); gap: 1rem 2.5rem; padding-block: .95rem; border-top: 1px solid var(--line-soft); align-items: baseline; }
+.row:first-of-type { border-top: 1px solid var(--line); }
+.row dd { margin: 0; color: var(--ink-2); font-size: .99rem; }
+.row dd b { color: var(--ink); font-weight: 500; }
+@media (max-width: 800px) { .row { grid-template-columns: 1fr; gap: .3rem; } }
+dl { margin: 0; }
+
+/* ── footer ────────────────────────────────────────────────────────────── */
+.foot { border-top: 1px solid var(--line); padding-block: clamp(3rem, 7vw, 5rem) 2.5rem; }
+.foot h2 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem); letter-spacing: -.035em; margin-bottom: 1.2rem; }
+.foot p { color: var(--ink-2); max-width: 46ch; margin-bottom: 1.9rem; }
+.colophon {
+  display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; justify-content: space-between;
+  margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line-soft);
+}
+
+/* ── reveal ────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .js .rv { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s cubic-bezier(.22,.75,.3,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="mark" href="#top">VKR<span>.</span></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-live="polite">Theme</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── hero ─────────────────────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="eyebrow mono">
+        <span>Senior Software Engineer</span><span class="sep">/</span>
+        <span>Frontend</span><span class="sep">/</span>
+        <span>Delhi, India</span>
+      </div>
+
+      <h1 class="name">Vaibhav<span class="l2">Kumar Rai</span></h1>
+
+      <p class="thesis">I take frontends that have outgrown their architecture and turn them into <em>systems a whole team can build on.</em></p>
+
+      <p class="sub">7+ years across security, compliance, healthcare and edtech. React, Next.js, TypeScript, FastAPI. Design systems, data-heavy interfaces, and the migrations that touch every screen in the product.</p>
+
+      <p class="status"><span class="dot"></span> Open to senior and staff frontend roles</p>
+
+      <div class="links">
+        <a class="btn primary" href="mailto:raivaibhav08@gmail.com">raivaibhav08@gmail.com</a>
+        <a class="btn" href="https://github.com/RaiVaibhav" rel="me noopener" target="_blank">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/raivaibhav08/" rel="me noopener" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── capabilities ──────────────────────────────────── -->
+  <section class="sec" id="focus">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="tag mono">What I actually do</span>
+        <span class="fill"></span>
+      </div>
+      <div class="caps rv">
+        <div class="cap">
+          <span class="stat">Design systems</span>
+          <h3>Three built from scratch</h3>
+          <p>Rearchitected the UI design system across multiple modules at Scrut, the layer the rest of the frontend pod built against. Storybook and custom theming at Kami Vision. Per-clinic branding, themes and layouts at Klinify.</p>
+        </div>
+        <div class="cap">
+          <span class="stat">Data-heavy interfaces</span>
+          <h3>Live tables that stay fast</h3>
+          <p>Virtualization and a reusable real-time table for live security data at Scrut, then code splitting to cut the initial bundle. At Klinify, 45% off dashboard load through memoization, API work and splitting.</p>
+        </div>
+        <div class="cap">
+          <span class="stat">Migrations</span>
+          <h3>The ones that touch everything</h3>
+          <p>Vue to React at Kami Vision, with a design system built underneath it. Krafty to Nuxt at Quizizz. Both shipped while the product kept moving.</p>
+        </div>
+        <div class="cap">
+          <span class="stat">Framework internals</span>
+          <h3>5 patches merged into Svelte</h3>
+          <p>Bindings, contenteditable regressions and lifecycle bugs in Svelte core, plus a fix in Qwik. 75 merged pull requests into repos I don't own. I read framework source when the bug stops making sense.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── experience ────────────────────────────────────── -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="tag mono">Experience</span>
+        <span class="fill"></span>
+        <span class="count mono">7 roles / 2018 to now</span>
+      </div>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2024 &mdash; 2026</span>
+          <span class="loc">Remote</span>
+        </div>
+        <div>
+          <h3>Scrut Automation</h3>
+          <p class="role">Senior Software Engineer, Frontend</p>
+          <p class="note">Promoted from SDE II (Jun 2024) to Senior (Apr 2025), same team</p>
+          <ul>
+            <li>Owned the React frontend architecture for the core security products, <b>findings and vulnerability management</b>. Made the technical calls, reviewed the code and coordinated releases as the senior engineer on the pod.</li>
+            <li>Rearchitected the app around a <b>UI design system spanning multiple modules</b>, the layer the rest of the frontend pod built against every sprint.</li>
+            <li>Added <b>virtualization and a reusable real-time table</b> for live, data-heavy views, then used code splitting to cut initial bundle size and load time.</li>
+            <li>Built the dashboards that surface security findings and incidents, so customer teams could resolve issues faster.</li>
+            <li>Integrated PostHog and worked with PMs and designers to add business-level signals and analytics.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Design system</span><span class="chip">Virtualization</span><span class="chip">Micro frontends</span><span class="chip">Nx</span><span class="chip">PostHog</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2022 &mdash; 2024</span>
+          <span class="loc">Bengaluru, India</span>
+        </div>
+        <div>
+          <h3>Kami Vision India</h3>
+          <p class="role">Senior Software Engineer, Frontend</p>
+
+          <div class="sub-block">
+            <span class="mono">Kami Cloud &middot; B2C</span>
+            <ul>
+              <li>Rewrote the Vue.js app in React and built a reusable design system under it with <b>Storybook and custom theming</b>.</li>
+              <li>Added responsive layouts, internationalization, code splitting, lazy loading and <b>Stripe payments</b>, with integration tests behind them.</li>
+            </ul>
+          </div>
+
+          <div class="sub-block">
+            <span class="mono">Internal Dashboard &middot; B2B</span>
+            <ul>
+              <li>Built the org-facing dashboard in Next.js with SSR and SSG, plus TypeScript transformers that normalized inconsistent API responses into one shape.</li>
+              <li>Set up the shared design system and testing approach the internal teams onboarded onto.</li>
+            </ul>
+          </div>
+
+          <p class="shift">Vue.js <span class="to">&rarr;</span> React</p>
+          <div class="chips">
+            <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Vue.js</span><span class="chip">TypeScript</span><span class="chip">Storybook</span><span class="chip">Stripe</span><span class="chip">i18n</span><span class="chip">SSR / SSG</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2022</span>
+          <span class="loc">Remote, India</span>
+        </div>
+        <div>
+          <h3>Milky Way AI</h3>
+          <p class="role">Freelance Frontend Developer</p>
+          <ul>
+            <li>Built a dashboard that automates stock replenishment and gives retail operations a real-time read on inventory.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2021 &mdash; 2022</span>
+          <span class="loc">Remote</span>
+        </div>
+        <div>
+          <h3>Quizizz <span class="mono" style="font-size:.7rem;color:var(--ink-3);letter-spacing:.08em;">now Wayground</span></h3>
+          <p class="role">Freelance Frontend Developer</p>
+          <ul>
+            <li>Worked the migration off Krafty onto Nuxt and built the complex UI components that came with it.</li>
+          </ul>
+          <p class="shift">Krafty <span class="to">&rarr;</span> Nuxt</p>
+          <div class="chips"><span class="chip">Vue.js</span><span class="chip">Nuxt</span></div>
+        </div>
+      </article>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2019 &mdash; 2021</span>
+          <span class="loc">Remote, India</span>
+        </div>
+        <div>
+          <h3>Klinify</h3>
+          <p class="role">Frontend Developer</p>
+          <ul>
+            <li>Cut dashboard load time by <b>45%</b> with memoization, API optimizations and code splitting.</li>
+            <li>Built a configurable design system carrying <b>per-clinic branding, themes and layouts</b>, with SSR and SSG for the dynamic content and SEO.</li>
+            <li>Added internationalization, Flask APIs and CouchDB map-reduce transformations.</li>
+          </ul>
+          <div class="chips"><span class="chip">React</span><span class="chip">SSR / SSG</span><span class="chip">Design system</span><span class="chip">Flask</span><span class="chip">CouchDB</span><span class="chip">i18n</span></div>
+        </div>
+      </article>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2019</span>
+          <span class="loc">Bangalore, India</span>
+        </div>
+        <div>
+          <h3>Appknox</h3>
+          <p class="role">Frontend Developer</p>
+          <ul>
+            <li>Built the Ember.js interface for running and managing application security scans, so customers could run <b>several scans in parallel</b> instead of one at a time. Throughput went up, turnaround came down.</li>
+            <li><b>25 pull requests merged</b> into <a href="https://github.com/appknox/irene" rel="noopener" target="_blank">appknox/irene</a>, their open source frontend.</li>
+          </ul>
+          <div class="chips"><span class="chip">Ember.js</span><span class="chip">AppSec</span><span class="chip">Open source</span></div>
+        </div>
+      </article>
+
+      <article class="job spec rv">
+        <div class="job-rail">
+          <span class="yr">2018 &mdash; 2019</span>
+          <span class="loc">Bangalore, India</span>
+        </div>
+        <div>
+          <h3>Squadcast</h3>
+          <p class="role">Software Developer Intern</p>
+          <ul>
+            <li>Built a <b>bidirectional sync between Slack and Squadcast chat</b> so incident updates landed in real time on both sides.</li>
+            <li>Wrote Enzyme tests across the frontend, shipped serverless Kubeless microservices, and stood up an Artifactory registry for private npm packages.</li>
+          </ul>
+          <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Kubeless</span><span class="chip">Enzyme</span><span class="chip">Artifactory</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── projects ──────────────────────────────────────── -->
+  <section class="sec" id="projects">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="tag mono">Built on my own time</span>
+        <span class="fill"></span>
+        <span class="count mono">github.com/RaiVaibhav</span>
+      </div>
+
+      <article class="proj spec rv">
+        <div class="job-rail">
+          <span class="kind">Project</span>
+          <div class="rail-links">
+            <a href="https://github.com/RaiVaibhav/agentgate" rel="noopener" target="_blank">Source &rarr;</a>
+            <a href="https://www.youtube.com/watch?v=6ZOvDO63Qqc" rel="noopener" target="_blank">Demo &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <h3><a href="https://github.com/RaiVaibhav/agentgate" rel="noopener" target="_blank">AgentGate</a></h3>
+          <p>Permission control for AI agents over MCP. It sits between an agent and a server like GitHub, Stripe or Slack, enforces per-tool permissions, scans responses for security problems, logs every decision, and revokes access instantly. The agent never gets the real API key, only a gateway URL.</p>
+          <p>Give an agent a GitHub token today and it gets everything that token allows. There's no way to say "read repos, never delete them." This is my answer to that.</p>
+          <div class="chips"><span class="chip">TypeScript</span><span class="chip">MCP</span><span class="chip">Access control</span><span class="chip">Audit log</span></div>
+        </div>
+      </article>
+
+      <article class="proj spec rv">
+        <div class="job-rail">
+          <span class="kind">Project</span>
+          <div class="rail-links">
+            <a href="https://bandhu-companion.netlify.app/" rel="noopener" target="_blank">Live &rarr;</a>
+            <a href="https://raivaibhav.github.io/bandhu/" rel="noopener" target="_blank">Eng docs &rarr;</a>
+            <a href="https://github.com/RaiVaibhav/bandhu" rel="noopener" target="_blank">Source &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <h3><a href="https://bandhu-companion.netlify.app/" rel="noopener" target="_blank">Bandhu</a></h3>
+          <p>A companion-first mental health check-in app for India. The idea is that it should feel like texting a friend, not opening a treatment tool. FastAPI with async SQLAlchemy and Postgres/pgvector on the back, React 19, Vite, Tailwind v4 and shadcn/ui on the front, NVIDIA NIM and Langfuse in the pipeline.</p>
+          <p>It's a prototype and I say so in the README. Anything safety-critical, crisis-language detection and clinical suggestions, sits behind a pipeline that has to be reviewed before it ships. The engineering docs cover the pipeline design, the vector schema and the manual QA cases.</p>
+          <div class="chips"><span class="chip">React 19</span><span class="chip">FastAPI</span><span class="chip">pgvector</span><span class="chip">RAG</span><span class="chip">Langfuse</span><span class="chip">Tailwind v4</span></div>
+        </div>
+      </article>
+
+      <article class="proj spec rv">
+        <div class="job-rail">
+          <span class="kind">Open source</span>
+          <div class="rail-links">
+            <a href="https://github.com/sveltejs/svelte/pulls?q=is%3Apr+author%3ARaiVaibhav+is%3Amerged" rel="noopener" target="_blank">Svelte PRs &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <h3>Svelte &amp; Qwik core</h3>
+          <p><b>5 pull requests merged into Svelte</b> and one into Qwik: element bindings, a contenteditable regression, <code>beforeUpdate</code> firing twice, <code>onDestroy</code> ordering, each-block bindings with spread syntax. Small fixes, but they meant reading someone else's compiler until the bug made sense.</p>
+          <div class="chips"><span class="chip">Svelte</span><span class="chip">Qwik</span><span class="chip">Compilers</span></div>
+        </div>
+      </article>
+
+      <article class="proj spec rv">
+        <div class="job-rail">
+          <span class="kind">2017 &mdash; 2018</span>
+          <div class="rail-links">
+            <a href="https://github.com/RaiVaibhav/GSoC-2018-Scrap" rel="noopener" target="_blank">GSoC repo &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <h3>coala, GSoC and Code-in</h3>
+          <p><b>Google Summer of Code 2018.</b> Wrote a Python tool that drops you straight into an analyzer's code and steps through it with a debugger interface like pdb, so debugging an analyzer got about as easy as writing one.</p>
+          <p><b>Google Code-in mentor</b>, two terms, with coala, the open source static analysis org. Also 2 merged fixes into <a href="https://github.com/man-group/pytest-plugins" rel="noopener" target="_blank">man-group/pytest-plugins</a> and an ESLint plugin of my own for nested-if detection.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Static analysis</span><span class="chip">Mentoring</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── toolkit ───────────────────────────────────────── -->
+  <section class="sec" id="toolkit">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="tag mono">Toolkit</span>
+        <span class="fill"></span>
+      </div>
+
+      <dl class="rv">
+        <div class="row">
+          <dt class="mono">Frontend</dt>
+          <dd>React.js, Next.js, Vue.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">State &amp; data</dt>
+          <dd>Redux, Zustand, React Query, REST APIs</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Testing</dt>
+          <dd>Jest, Cypress, Storybook, Enzyme</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Architecture</dt>
+          <dd>Design systems, micro frontends, Nx monorepo, SSR, SSG, component libraries, i18n, virtualization, performance work</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Backend</dt>
+          <dd>FastAPI, Python, Node.js, PostgreSQL, NoSQL, Swagger</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">AI &amp; telemetry</dt>
+          <dd>Retrieval-augmented generation, Langfuse, Grafana, telemetry, MCP</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Tools</dt>
+          <dd>Git, CI/CD, Webpack, Vite, Jira, AWS</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">UI / UX</dt>
+          <dd>Responsive design, accessibility (a11y), cross-browser compatibility</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Languages</dt>
+          <dd>English (full professional), Hindi (full professional)</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── education / current ────────────────────────────────── -->
+  <section class="sec" id="edu">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="tag mono">Education, certificates &amp; current</span>
+        <span class="fill"></span>
+      </div>
+
+      <dl class="rv">
+        <div class="row">
+          <dt class="mono">2015 &mdash; 2019</dt>
+          <dd><b>B.Tech, Computer Science and Engineering.</b> Shri Mata Vaishno Devi University, Jammu &amp; Kashmir</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Certificates</dt>
+          <dd>DeepLearning.AI: Neural Networks and Deep Learning &middot; DeepLearning.AI: Machine Learning &middot; Google: Foundations of Project Management &middot; Google: Project Initiation</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Right now</dt>
+          <dd>Going deep on <b>agentic AI and RAG</b>, which is where AgentGate and Bandhu came from. What I actually want to know is what these systems need from a frontend, because that answer is still being worked out.</dd>
+        </div>
+        <div class="row">
+          <dt class="mono">Off the clock</dt>
+          <dd>Runner, paragliding pilot, licensed skydiver. I keep a CSS-only art gallery on CodePen, because I'd rather battle CSS than DS Algo.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── footer ─────────────────────────────────────────────────────────── -->
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="rule" style="margin-bottom:2.5rem;"></div>
+    <h2 class="rv">Let's talk.</h2>
+    <p class="rv">If your frontend has outgrown the architecture holding it up, that's the problem I like. Email is the fastest way to reach me.</p>
+    <div class="links rv">
+      <a class="btn primary" href="mailto:raivaibhav08@gmail.com">raivaibhav08@gmail.com</a>
+      <a class="btn" href="https://github.com/raivaibhav" rel="me noopener" target="_blank">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/raivaibhav08/" rel="me noopener" target="_blank">LinkedIn</a>
+    </div>
+    <div class="colophon mono">
+      <span>Vaibhav Kumar Rai &middot; Delhi, India</span>
+      <span>Set in Archivo, Newsreader &amp; IBM Plex Mono</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme');
+
+  function stored() {
+    try { return localStorage.getItem('vkr-theme'); } catch (e) { return null; }
+  }
+  function systemDark() {
+    return !window.matchMedia || window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function current() {
+    return root.getAttribute('data-theme') || (systemDark() ? 'dark' : 'light');
+  }
+  function label() {
+    btn.textContent = current() === 'dark' ? 'Light' : 'Dark';
+    btn.setAttribute('aria-label', 'Switch to ' + (current() === 'dark' ? 'light' : 'dark') + ' theme');
+  }
+
+  var saved = stored();
+  if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  label();
+
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('vkr-theme', next); } catch (e) {}
+    label();
+  });
+
+  // scroll reveals, skipped entirely when the viewer prefers reduced motion
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var fired = false;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { fired = true; en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  items.forEach(function (el) { io.observe(el); });
+
+  // The content must never depend on the observer to become visible.
+  setTimeout(function () {
+    if (fired) return;
+    for (var j = 0; j < items.length; j++) items[j].classList.add('in');
+  }, 2500);
+})();
+</script>
+</body>
+</html>
