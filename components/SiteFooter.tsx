@@ -9,7 +9,7 @@ export default function SiteFooter() {
           <h2>Let&rsquo;s talk.</h2>
           <p>
             If your frontend has outgrown the architecture holding it up, that&rsquo;s the problem
-            I like most. Email is the fastest way to reach me.
+            I like most.
           </p>
           <div className="links">
             <a className="btn" href={`mailto:${site.email}`}>

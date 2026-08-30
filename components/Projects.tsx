@@ -7,10 +7,9 @@ export default function Projects() {
     <section className="sec sec-mint" id="projects">
       <div className="wrap">
         <Reveal>
-          <h2 className="sec-title">Things I made on my own</h2>
+          <h2 className="sec-title">Side projects</h2>
           <p className="sec-intro">
-            These are entirely mine, so I can show all of them. One is embedded live below,
-            because a screenshot of a working app is a worse argument than the app.
+            Entirely mine, so I can show all of it. One is running live below.
           </p>
         </Reveal>
 

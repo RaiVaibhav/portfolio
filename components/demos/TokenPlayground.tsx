@@ -61,8 +61,7 @@ export default function TokenPlayground() {
           </div>
 
           <p style={{ fontSize: ".85rem", color: "var(--ink-3)", lineHeight: 1.5 }}>
-            Two variables. Every component to the right reads them, so nothing here is restyled
-            by hand.
+            Every component to the right reads these. Nothing is restyled by hand.
           </p>
         </div>
 
@@ -88,8 +87,7 @@ export default function TokenPlayground() {
       </div>
 
       <p className="demo-note">
-        The point of a design system is that this is the whole change. Pick a colour, drag the
-        radius, and the card, buttons and chips all move together because they were never given
+        Two variables. The card, buttons and chips move together because they were never given
         their own values.
       </p>
     </div>

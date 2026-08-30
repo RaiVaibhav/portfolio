@@ -7,11 +7,9 @@ export default function Demos() {
     <section className="sec sec-sand" id="demos">
       <div className="wrap">
         <Reveal>
-          <h2 className="sec-title">Two claims, running instead of described</h2>
+          <h2 className="sec-title">Live demos</h2>
           <p className="sec-intro">
-            My CV says I built a virtualized real-time table and a design system other engineers
-            worked on top of. Rather than ask you to take that on faith, here are both, rebuilt
-            from scratch for this page. No client code, no client data.
+            Two claims from my CV, rebuilt for this page. No client code, no client data.
           </p>
         </Reveal>
 

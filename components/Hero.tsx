@@ -1,40 +1,44 @@
-import Image from "next/image";
 import { site } from "@/content/site";
 
 export default function Hero() {
   return (
-    <section className="hero" id="top">
-      <div className="wrap hero-grid">
+    <section className="profile" id="top">
+      <div className="wrap profile-grid">
         <div>
-          <p className="avail">{site.status}</p>
-          <h1>{site.headline}</h1>
-          <p className="hero-lede">{site.lede}</p>
-          <p className="hero-sub">{site.sub}</p>
-          <div className="links">
-            <a className="btn primary" href="#work">
-              See the work
+          <h1>
+            {site.firstName} {site.lastName}
+          </h1>
+          <p className="profile-role">
+            {site.role} · {site.location}
+          </p>
+
+          <p className="profile-bio">
+            I build and restructure large React frontends, mostly for security and compliance
+            products. The messy structural work is the part I actually like.
+          </p>
+
+          <nav className="profile-links" aria-label="Profile links">
+            <a href={site.github} rel="me noopener noreferrer" target="_blank">
+              GitHub <span className="ext" aria-hidden="true">↗</span>
             </a>
-            <a className="btn" href={`mailto:${site.email}`}>
-              Email me
+            <a href={site.linkedin} rel="me noopener noreferrer" target="_blank">
+              LinkedIn <span className="ext" aria-hidden="true">↗</span>
             </a>
-            <a className="btn" href={site.github} rel="me noopener noreferrer" target="_blank">
-              GitHub
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={site.resume} download>
+              Resume <span className="ext" aria-hidden="true"></span>
             </a>
-          </div>
+          </nav>
         </div>
 
-        <figure className="hero-art">
-          <Image
-            src="/bandhu/mascot-cloud.jpg"
-            alt="The clay mascot from Bandhu, a mental health check-in app Vaibhav built"
-            width={520}
-            height={520}
-            priority
-          />
-          <figcaption>
-            From <strong>Bandhu</strong>, a side project. It&rsquo;s running further down this page.
-          </figcaption>
-        </figure>
+        <dl className="profile-facts">
+          {site.facts.map((f) => (
+            <div key={f.label}>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

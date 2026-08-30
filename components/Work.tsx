@@ -9,9 +9,8 @@ export default function Work() {
         <Reveal>
           <h2 className="sec-title">Where I&rsquo;ve worked</h2>
           <p className="sec-intro">
-            Most of this is behind a login, so where the product has a public page I&rsquo;ve
-            linked it. You can see what the thing actually is, and I&rsquo;ll tell you which part
-            of it was mine.
+            Most of it sits behind a login, so where the product has a public page I&rsquo;ve
+            linked it.
           </p>
         </Reveal>
 

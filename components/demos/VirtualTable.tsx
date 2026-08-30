@@ -211,9 +211,8 @@ export default function VirtualTable() {
       </div>
 
       <p className="demo-note">
-        50,000 rows, roughly a dozen of them actually in the DOM at any moment. Rows mutate while
-        you scroll, which is the part that usually breaks. Scroll it, filter it, try to make it
-        stutter.
+        50,000 rows, about a dozen in the DOM. Rows mutate while you scroll, which is the part
+        that usually breaks. Try to make it stutter.
       </p>
     </div>
   );
