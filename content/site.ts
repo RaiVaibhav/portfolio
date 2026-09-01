@@ -5,7 +5,7 @@ export const site = {
 
   firstName: "Vaibhav",
   lastName: "Kumar Rai",
-  role: "Senior Frontend Engineer",
+  role: "Senior Software Engineer",
   location: "Delhi, India",
   email: "raivaibhav08@gmail.com",
   github: "https://github.com/RaiVaibhav",
@@ -27,5 +27,5 @@ export const site = {
   sub: "Two years at Scrut Automation just wrapped. Before that, Kami Vision, Quizizz, Klinify, Appknox and Squadcast.",
 
   metaDescription:
-    "Vaibhav Kumar Rai, senior frontend engineer. 7+ years on React, Next.js, TypeScript and FastAPI, mostly in security and compliance. Design systems, virtualized data tables, and large frontend migrations.",
+    "Vaibhav Kumar Rai, senior software engineer. 7+ years on React, Next.js, TypeScript, PostgreSQL and FastAPI, mostly in security and compliance. Design systems, virtualized data tables, and large frontend migrations.",
 } as const;

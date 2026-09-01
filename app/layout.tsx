@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   creator: `${site.firstName} ${site.lastName}`,
   keywords: [
     "Vaibhav Kumar Rai",
+    "senior software engineer",
     "senior frontend engineer",
     "React",
     "Next.js",

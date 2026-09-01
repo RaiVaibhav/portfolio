@@ -26,7 +26,7 @@ export default function Hero() {
             </a>
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <a href={site.resume} download>
-              Resume <span className="ext" aria-hidden="true"></span>
+              Resume
             </a>
           </nav>
         </div>
