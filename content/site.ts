@@ -6,7 +6,6 @@ export const site = {
   firstName: "Vaibhav",
   lastName: "Kumar Rai",
   role: "Senior Software Engineer",
-  location: "Delhi, India",
   email: "raivaibhav08@gmail.com",
   github: "https://github.com/RaiVaibhav",
   linkedin: "https://www.linkedin.com/in/raivaibhav08/",
@@ -19,7 +18,6 @@ export const site = {
     { label: "Recently", value: "2 years at Scrut Automation" },
     { label: "Stack", value: "React, Next.js, TypeScript, Vue, PostgreSQL, FastAPI" },
     { label: "Focus", value: "Design systems, data-heavy UI, migrations" },
-    { label: "Based", value: "Delhi, India \u00b7 remote" },
   ],
 
   headline: "I make big frontends easier to work in.",

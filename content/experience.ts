@@ -3,13 +3,13 @@ import type { Job } from "./types";
 export const experience: Job[] = [
   {
     company: "Scrut Automation",
+    location: "Bangalore",
     url: "https://www.scrut.io/product-tour",
     urlLabel: "Scrut product tour",
     urlNote: "GRC platform · the product I worked on",
     role: "Senior Software Engineer, Frontend",
     note: "Promoted from SDE II (Jun 2024) to Senior (Apr 2025), same team",
     years: "2024 — 2026",
-    location: "Remote",
     bullets: [
       "Owned the React frontend architecture for the core security products, **findings and vulnerability management**. Made the technical calls, reviewed the code and coordinated releases as the senior engineer on the pod.",
       "Rearchitected the app around a **UI design system spanning multiple modules**, the layer the rest of the frontend pod built against every sprint.",
@@ -20,13 +20,13 @@ export const experience: Job[] = [
     chips: ["React", "TypeScript", "Design system", "Virtualization", "Micro frontends", "Nx", "PostHog"],
   },
   {
-    company: "Kami Vision India",
+    company: "Kami Vision",
+    location: "Bangalore",
     url: "https://kami-ai.com/",
     urlLabel: "Kami AI",
     urlNote: "Kami Cloud, the B2C app I rewrote",
     role: "Senior Software Engineer, Frontend",
     years: "2022 — 2024",
-    location: "Bengaluru, India",
     groups: [
       {
         label: "Kami Cloud · B2C",
@@ -48,21 +48,21 @@ export const experience: Job[] = [
   },
   {
     company: "Milky Way AI",
+    location: "Remote",
     role: "Freelance Frontend Engineer",
     years: "2022",
-    location: "Remote, India",
     bullets: [
       "Built a dashboard that automates stock replenishment and gives retail operations a real-time read on inventory.",
     ],
   },
   {
     company: "Quizizz",
+    location: "Remote",
     url: "https://wayground.com/",
     urlLabel: "Wayground",
     urlNote: "Quizizz, renamed since I was there",
     role: "Freelance Frontend Engineer",
     years: "2021 — 2022",
-    location: "Remote",
     bullets: [
       "Worked the migration off Krafty onto Nuxt and built the complex UI components that came with it.",
     ],
@@ -71,9 +71,9 @@ export const experience: Job[] = [
   },
   {
     company: "Klinify",
+    location: "Remote",
     role: "Frontend Engineer",
     years: "2019 — 2021",
-    location: "Remote, India",
     bullets: [
       "Cut dashboard load time by **45%** with memoization, API optimizations and code splitting.",
       "Built a configurable design system carrying **per-clinic branding, themes and layouts**, with SSR and SSG for the dynamic content and SEO.",
@@ -83,12 +83,12 @@ export const experience: Job[] = [
   },
   {
     company: "Appknox",
+    location: "Bangalore",
     url: "https://www.appknox.com/",
     urlLabel: "Appknox",
     urlNote: "Mobile app security scanning",
     role: "Frontend Engineer",
     years: "2019",
-    location: "Bangalore, India",
     bullets: [
       "Built the Ember.js interface for running and managing application security scans, so customers could run **several scans in parallel** instead of one at a time. Throughput went up, turnaround came down.",
       "**25 pull requests merged** into [appknox/irene](https://github.com/appknox/irene), their open source frontend.",
@@ -97,12 +97,12 @@ export const experience: Job[] = [
   },
   {
     company: "Squadcast",
+    location: "Bangalore",
     url: "https://www.solarwinds.com/it-incident-response-software",
     urlLabel: "SolarWinds Incident Response",
     urlNote: "Squadcast, acquired by SolarWinds",
     role: "Software Engineer Intern",
     years: "2018 — 2019",
-    location: "Bangalore, India",
     bullets: [
       "Built a **bidirectional sync between Slack and Squadcast chat** so incident updates landed in real time on both sides.",
       "Wrote Enzyme tests across the frontend, shipped serverless Kubeless microservices, and stood up an Artifactory registry for private npm packages.",

@@ -38,8 +38,6 @@ export const metadata: Metadata = {
     "FastAPI",
     "micro frontends",
     "frontend architecture",
-    "Delhi",
-    "India",
   ],
   alternates: { canonical: "/" },
   robots: {
@@ -86,11 +84,6 @@ const PERSON = {
   email: `mailto:${site.email}`,
   jobTitle: site.role,
   description: site.metaDescription,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Delhi",
-    addressCountry: "IN",
-  },
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Shri Mata Vaishno Devi University",

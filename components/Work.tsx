@@ -19,7 +19,7 @@ export default function Work() {
             <div className="work-head">
               <h3>{job.company}</h3>
               <span className="work-meta">
-                {job.years} · {job.location}
+                {job.location ? `${job.years} · ${job.location}` : job.years}
               </span>
             </div>
             <p className="work-role">{job.role}</p>

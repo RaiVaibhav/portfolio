@@ -3,7 +3,7 @@ export type Job = {
   role: string;
   note?: string;
   years: string;
-  location: string;
+  location?: string;
   /** Public page for the product, so a reader can see what it actually is. */
   url?: string;
   urlLabel?: string;

@@ -26,7 +26,7 @@ export default function SiteFooter() {
 
         <div className="colophon">
           <span>
-            {site.firstName} {site.lastName} · {site.location}
+            {site.firstName} {site.lastName}
           </span>
           <span>Built with Next.js. Colours and type borrowed from my own app, Bandhu.</span>
         </div>

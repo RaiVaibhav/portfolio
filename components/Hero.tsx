@@ -9,7 +9,7 @@ export default function Hero() {
             {site.firstName} {site.lastName}
           </h1>
           <p className="profile-role">
-            {site.role} · {site.location}
+            {site.role}
           </p>
 
           <p className="profile-bio">
