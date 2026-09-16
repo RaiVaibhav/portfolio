@@ -1,29 +1,72 @@
 "use client";
 
 import { useState } from "react";
+import { playClick, playPop } from "@/lib/audio";
+import { showToast } from "../Toast";
 
 const PALETTE = [
-  { name: "Sage", value: "#42655b" },
-  { name: "Plum", value: "#655975" },
-  { name: "Clay", value: "#a1543a" },
-  { name: "Ink", value: "#1f3a5f" },
-  { name: "Moss", value: "#4f6b2a" },
+  { name: "Sage", value: "#42655b", tint: "#e8f3f0" },
+  { name: "Plum", value: "#655975", tint: "#f2edf8" },
+  { name: "Clay", value: "#a1543a", tint: "#faece8" },
+  { name: "Ink", value: "#1f3a5f", tint: "#e9f1fa" },
+  { name: "Forest", value: "#2d5a3f", tint: "#eaf5ee" },
+  { name: "Amber", value: "#b45309", tint: "#fef3c7" },
 ];
 
 export default function TokenPlayground() {
-  const [primary, setPrimary] = useState(PALETTE[0].value);
-  const [radius, setRadius] = useState(12);
+  const [selectedColor, setSelectedColor] = useState(PALETTE[0]);
+  const [radius, setRadius] = useState(10);
+  const [density, setDensity] = useState<"compact" | "spacious">("compact");
+
+  function copyCssVariables() {
+    playClick();
+    const css = `:root {\n  --primary: ${selectedColor.value};\n  --primary-tint: ${selectedColor.tint};\n  --radius: ${radius}px;\n  --spacing-density: ${density === "compact" ? "0.75rem" : "1.25rem"};\n}`;
+    navigator.clipboard?.writeText(css);
+    showToast("CSS variables copied to clipboard");
+  }
+
+  function exportJson() {
+    playClick();
+    const json = JSON.stringify(
+      {
+        tokens: {
+          color: {
+            primary: { value: selectedColor.value, type: "color" },
+            tint: { value: selectedColor.tint, type: "color" },
+          },
+          radii: {
+            base: { value: `${radius}px`, type: "borderRadius" },
+          },
+          density: {
+            mode: density,
+            padding: density === "compact" ? "12px" : "20px",
+          },
+        },
+      },
+      null,
+      2,
+    );
+    navigator.clipboard?.writeText(json);
+    showToast("Design Token JSON copied");
+  }
 
   return (
     <div className="demo">
       <div className="demo-head">
-        <span className="demo-title">Design tokens</span>
+        <div className="demo-title-group">
+          <span className="demo-title">Design Token & System Studio</span>
+          <span className="demo-sub-badge">Dynamic Cascading Variables</span>
+        </div>
+
         <div className="demo-stats">
           <span className="stat">
-            --primary <b>{primary}</b>
+            --primary <b>{selectedColor.value}</b>
           </span>
           <span className="stat">
             --radius <b>{radius}px</b>
+          </span>
+          <span className="stat">
+            mode <b>{density}</b>
           </span>
         </div>
       </div>
@@ -31,24 +74,30 @@ export default function TokenPlayground() {
       <div className="tp-body">
         <div className="tp-controls">
           <div className="tp-field">
-            <label id="tp-primary-label">Primary</label>
+            <label id="tp-primary-label">Primary Color Harmony</label>
             <div className="tp-swatches" role="group" aria-labelledby="tp-primary-label">
               {PALETTE.map((c) => (
                 <button
                   key={c.value}
                   type="button"
-                  className="tp-swatch"
+                  className={`tp-swatch ${selectedColor.value === c.value ? "active" : ""}`}
                   style={{ background: c.value }}
                   aria-label={c.name}
-                  aria-pressed={primary === c.value}
-                  onClick={() => setPrimary(c.value)}
+                  aria-pressed={selectedColor.value === c.value}
+                  onClick={() => {
+                    playPop();
+                    setSelectedColor(c);
+                  }}
                 />
               ))}
             </div>
           </div>
 
           <div className="tp-field">
-            <label htmlFor="tp-radius">Corner radius</label>
+            <div className="tp-label-row">
+              <label htmlFor="tp-radius">Corner Radius Curve</label>
+              <span className="tp-val">{radius}px</span>
+            </div>
             <input
               id="tp-radius"
               type="range"
@@ -57,38 +106,78 @@ export default function TokenPlayground() {
               value={radius}
               onChange={(e) => setRadius(Number(e.target.value))}
             />
-            <span className="tp-val">{radius}px</span>
           </div>
 
-          <p style={{ fontSize: ".85rem", color: "var(--ink-3)", lineHeight: 1.5 }}>
-            Every component to the right reads these. Nothing is restyled by hand.
-          </p>
+          <div className="tp-field">
+            <label>Component Density Mode</label>
+            <div className="seg" role="group">
+              <button
+                type="button"
+                aria-pressed={density === "compact"}
+                onClick={() => {
+                  playPop();
+                  setDensity("compact");
+                }}
+              >
+                Compact (Data-Dense)
+              </button>
+              <button
+                type="button"
+                aria-pressed={density === "spacious"}
+                onClick={() => {
+                  playPop();
+                  setDensity("spacious");
+                }}
+              >
+                Spacious (Editorial)
+              </button>
+            </div>
+          </div>
+
+          <div className="tp-actions-row">
+            <button type="button" className="btn-token-action" onClick={copyCssVariables}>
+              Copy CSS Vars
+            </button>
+            <button type="button" className="btn-token-action secondary" onClick={exportJson}>
+              Export JSON
+            </button>
+          </div>
         </div>
 
         <div className="tp-preview">
           <div
-            className="tp-scope"
-            style={{ ["--p" as string]: primary, ["--r" as string]: `${radius}px` }}
+            className={`tp-scope ${density}`}
+            style={{
+              ["--p" as string]: selectedColor.value,
+              ["--p-tint" as string]: selectedColor.tint,
+              ["--r" as string]: `${radius}px`,
+            }}
           >
             <div className="tp-card">
-              <h4>Vendor review</h4>
-              <p>SOC 2 Type II expires in 32 days.</p>
-              <div className="tp-btn-row" style={{ marginTop: ".85rem" }}>
-                <span className="tp-btn">Request evidence</span>
-                <span className="tp-btn ghost">Snooze</span>
+              <div className="tp-card-head">
+                <h4>Vendor SOC 2 Compliance Review</h4>
+                <span className="tp-chip alert">Expiring in 18 days</span>
+              </div>
+              <p>
+                Continuous cloud asset scanning detected unencrypted S3 read policies on staging environment.
+              </p>
+              <div className="tp-btn-row">
+                <button type="button" className="tp-btn primary">Remediate Finding</button>
+                <button type="button" className="tp-btn ghost">Request Evidence</button>
               </div>
             </div>
-            <div className="tp-btn-row">
-              <span className="tp-chip">In review</span>
-              <span className="tp-chip">Owner: Vaibhav</span>
+
+            <div className="tp-sub-row">
+              <span className="tp-badge">Owner: Vaibhav</span>
+              <span className="tp-badge">Framework: SOC 2 Type II</span>
+              <span className="tp-badge">Auditor: Passed</span>
             </div>
           </div>
         </div>
       </div>
 
       <p className="demo-note">
-        Two variables. The card, buttons and chips move together because they were never given
-        their own values.
+        <b>Cascading Design Architecture:</b> Child elements inherit semantic tokens via CSS variables rather than hardcoded rules. Updating the design contract instantly restyles the entire surface while preserving accessibility contrast ratios.
       </p>
     </div>
   );

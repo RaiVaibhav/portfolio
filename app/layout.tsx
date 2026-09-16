@@ -103,7 +103,7 @@ const PERSON = {
   sameAs: [site.github, site.linkedin],
 };
 
-const BOOT = `(function(){try{var r=document.documentElement;r.classList.add("js");var t=localStorage.getItem("vkr-theme");if(t==="dark"||t==="light")r.setAttribute("data-theme",t)}catch(e){}})()`;
+const BOOT = `(function(){try{var r=document.documentElement;r.classList.add("js");var t=localStorage.getItem("vkr-theme");if(t==="dark"||t==="light")r.setAttribute("data-theme",t);window.addEventListener("pointermove",function(e){r.style.setProperty("--mouse-x",e.clientX+"px");r.style.setProperty("--mouse-y",e.clientY+"px")},{passive:true})}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

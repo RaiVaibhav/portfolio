@@ -7,10 +7,13 @@ export default function Demos() {
     <section className="sec sec-sand" id="demos">
       <div className="wrap">
         <Reveal>
-          <h2 className="sec-title">Live demos</h2>
-          <p className="sec-intro">
-            Two claims from my CV, rebuilt for this page. No client code, no client data.
-          </p>
+          <div className="sec-header-center">
+            <span className="eyebrow">Engineering In Action</span>
+            <h2 className="sec-title">Interactive Engineering Benchmarks</h2>
+            <p className="sec-intro">
+              Live proofs of claims from my CV, executed natively in your browser. No mock screenshots, zero client data, real-time compute.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal>
@@ -18,7 +21,7 @@ export default function Demos() {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginTop: "clamp(1.5rem, 4vw, 2.5rem)" }}>
+          <div style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
             <TokenPlayground />
           </div>
         </Reveal>

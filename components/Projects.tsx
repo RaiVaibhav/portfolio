@@ -7,20 +7,27 @@ export default function Projects() {
     <section className="sec sec-mint" id="projects">
       <div className="wrap">
         <Reveal>
-          <h2 className="sec-title">Side projects</h2>
-          <p className="sec-intro">
-            Entirely mine, so I can show all of it. One is running live below.
-          </p>
+          <div className="sec-header-row">
+            <div>
+              <span className="eyebrow">Production &amp; Open Source</span>
+              <h2 className="sec-title">Featured Projects</h2>
+              <p className="sec-intro">
+                Entirely mine, so I can show all of it. One is running live below.
+              </p>
+            </div>
+          </div>
         </Reveal>
 
         {projects.map((p) => (
           <Reveal as="article" className="proj" key={p.name}>
-            <div>
-              <p className="kind">{p.kind}</p>
+            <div className="proj-content">
+              <div className="proj-kind-row">
+                <span className="kind">{p.kind}</span>
+              </div>
               <h3>
                 {p.href ? (
                   <a href={p.href} rel="noopener noreferrer" target="_blank">
-                    {p.name}
+                    {p.name} <span className="ext" aria-hidden="true">↗</span>
                   </a>
                 ) : (
                   p.name
@@ -38,18 +45,25 @@ export default function Projects() {
                 ))}
               </div>
 
-              <div className="links" style={{ marginTop: "1.25rem" }}>
+              <div className="links" style={{ marginTop: "1.5rem" }}>
                 {p.links.map((l) => (
-                  <a className="btn" key={l.href} href={l.href} rel="noopener noreferrer" target="_blank">
-                    {l.label}
+                  <a
+                    className="btn btn-proj"
+                    key={l.href}
+                    href={l.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {l.label} <span aria-hidden="true">↗</span>
                   </a>
                 ))}
               </div>
             </div>
 
             {p.embed ? (
-              <div>
+              <div className="proj-embed-wrapper">
                 <div className="phone">
+                  <div className="phone-notch" />
                   <iframe
                     src={p.embed}
                     title={`${p.name}, running live`}

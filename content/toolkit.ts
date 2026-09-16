@@ -26,7 +26,7 @@ export const education: SpecRow[] = [
   },
   {
     label: "Right now",
-    value: "Going deep on **agentic AI and RAG**, which is where AgentGate and Bandhu came from. What I actually want to know is what these systems need from a frontend, because that answer is still being worked out.",
+    value: "Going deep on **agentic AI systems and streaming RAG**, focusing on fine-grained MCP tool security (AgentGate) and high-throughput data visualization. What I am solving is what these emerging AI workflows demand from frontend architectures.",
   },
   {
     label: "Off the clock",
