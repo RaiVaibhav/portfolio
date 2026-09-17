@@ -9,7 +9,6 @@ const LINKS = [
   { href: "#architecture", label: "Blueprints" },
   { href: "#work", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#polymath", label: "Beyond" },
   { href: "#toolkit", label: "Toolkit" },
   { href: "#contact", label: "Contact" },
 ];
