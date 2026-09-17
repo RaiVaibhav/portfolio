@@ -8,10 +8,10 @@ export default function Demos() {
       <div className="wrap">
         <Reveal>
           <div className="sec-header-center">
-            <span className="eyebrow">Engineering In Action</span>
-            <h2 className="sec-title">Interactive Engineering Benchmarks</h2>
+            <span className="eyebrow">Interactive</span>
+            <h2 className="sec-title">Live Demos</h2>
             <p className="sec-intro">
-              Live proofs of claims from my CV, executed natively in your browser. No mock screenshots, zero client data, real-time compute.
+              A couple of quick demos showing how I handle large datasets and design tokens directly in the browser.
             </p>
           </div>
         </Reveal>

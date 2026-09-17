@@ -5,8 +5,8 @@ import { playClick, playPop, toggleAudio, isAudioMuted } from "@/lib/audio";
 import { showToast } from "./Toast";
 
 const LINKS = [
-  { href: "#demos", label: "Benchmarks" },
-  { href: "#architecture", label: "Blueprints" },
+  { href: "#demos", label: "Demos" },
+  { href: "#architecture", label: "Architecture" },
   { href: "#work", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#toolkit", label: "Toolkit" },

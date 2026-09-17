@@ -26,7 +26,7 @@ export const education: SpecRow[] = [
   },
   {
     label: "Right now",
-    value: "Going deep on **agentic AI systems and streaming RAG**, focusing on fine-grained MCP tool security (AgentGate) and high-throughput data visualization. What I am solving is what these emerging AI workflows demand from frontend architectures.",
+    value: "Going deep on **agentic AI workflows and tool security over MCP** (like AgentGate), plus high-throughput data visualization in the browser.",
   },
   {
     label: "Off the clock",

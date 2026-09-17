@@ -22,7 +22,7 @@ export default function Hero({ onOpenCommandPalette }: { onOpenCommandPalette?: 
                 <span className="beacon-ping" />
                 <span className="beacon-dot" />
               </span>
-              <span>Open to Senior &amp; Staff Roles</span>
+              <span>Open to senior and staff frontend roles</span>
             </div>
 
             <h1 className="profile-name">
@@ -30,13 +30,11 @@ export default function Hero({ onOpenCommandPalette }: { onOpenCommandPalette?: 
             </h1>
 
             <p className="profile-role">
-              Senior Frontend &amp; Systems Engineer
+              Senior Software Engineer · Frontend Architecture
             </p>
 
             <p className="profile-bio">
-              I architect large-scale React frontends, virtualized data engines, and design systems,
-              mostly for security, compliance, and agentic AI products. When an application has outgrown
-              its initial architecture, I restructure it without halting the product roadmap.
+              I take frontends that have outgrown their architecture and turn them into systems a whole team can build on. 7+ years across security, compliance, healthcare, and edtech.
             </p>
 
             <div className="profile-actions-row">
@@ -69,7 +67,7 @@ export default function Hero({ onOpenCommandPalette }: { onOpenCommandPalette?: 
                   title="Open Command Palette (⌘K)"
                 >
                   <kbd className="cmd-chip">⌘K</kbd>
-                  <span className="cmd-label">Spotlight</span>
+                  <span className="cmd-label">Quick Search</span>
                 </button>
               )}
             </div>
@@ -91,26 +89,25 @@ export default function Hero({ onOpenCommandPalette }: { onOpenCommandPalette?: 
         <Reveal>
           <div className="telemetry-card">
             <div className="telemetry-head">
-              <span className="telemetry-label">Engineering Telemetry</span>
-              <span className="telemetry-live-dot" />
+              <span className="telemetry-label">At a glance</span>
             </div>
 
             <div className="telemetry-grid">
               <div className="telemetry-metric">
                 <span className="metric-num">7+</span>
-                <span className="metric-label">Years Shipping Systems</span>
+                <span className="metric-label">Years of experience</span>
               </div>
               <div className="telemetry-metric">
-                <span className="metric-num">100k</span>
-                <span className="metric-label">Virtualized Rows @ 60 FPS</span>
+                <span className="metric-num">50k+</span>
+                <span className="metric-label">Virtualized table rows</span>
               </div>
               <div className="telemetry-metric">
                 <span className="metric-num">5</span>
-                <span className="metric-label">Svelte &amp; Qwik Core PRs</span>
+                <span className="metric-label">Svelte core compiler PRs</span>
               </div>
               <div className="telemetry-metric">
-                <span className="metric-num">0</span>
-                <span className="metric-label">Layout Shifts / Zero Jank</span>
+                <span className="metric-num">3</span>
+                <span className="metric-label">Design systems built</span>
               </div>
             </div>
 

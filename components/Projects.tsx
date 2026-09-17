@@ -9,10 +9,10 @@ export default function Projects() {
         <Reveal>
           <div className="sec-header-row">
             <div>
-              <span className="eyebrow">Production &amp; Open Source</span>
+              <span className="eyebrow">Projects</span>
               <h2 className="sec-title">Featured Projects</h2>
               <p className="sec-intro">
-                Entirely mine, so I can show all of it. One is running live below.
+                Side projects and open source work where I can share the code and live demo.
               </p>
             </div>
           </div>

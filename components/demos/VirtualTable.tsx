@@ -171,8 +171,8 @@ export default function VirtualTable() {
     <div className="demo">
       <div className="demo-head">
         <div className="demo-title-group">
-          <span className="demo-title">Security findings benchmark</span>
-          <span className="demo-sub-badge">Zero-Jank Virtualization</span>
+          <span className="demo-title">Virtual table demo</span>
+          <span className="demo-sub-badge">50,000 rows</span>
         </div>
 
         <div className="demo-stats">
@@ -181,13 +181,13 @@ export default function VirtualTable() {
             <b>{fps}</b> FPS
           </span>
           <span className="stat">
-            <b>{renderLatency}ms</b> slice compute
+            <b>{renderLatency}ms</b> render
           </span>
           <span className="stat">
-            <b>{slice.length}</b> DOM nodes
+            <b>{slice.length}</b> rows in DOM
           </span>
           <span className="stat">
-            <b>{updates.toLocaleString("en-US")}</b> mutations
+            <b>{updates.toLocaleString("en-US")}</b> live updates
           </span>
         </div>
       </div>
@@ -219,9 +219,9 @@ export default function VirtualTable() {
               playClick();
               setBurstMode((v) => !v);
             }}
-            title="Simulate 200 mutations per second stress test"
+            title="Simulate rapid background updates"
           >
-            {burstMode ? "🔥 Burst Mode Active" : "⚡ Stress Test (Burst)"}
+            {burstMode ? "Fast updates active" : "Test rapid updates"}
           </button>
 
           <button
@@ -232,7 +232,7 @@ export default function VirtualTable() {
               setLive((v) => !v);
             }}
           >
-            {live ? "⏸ Pause Stream" : "▶ Resume Stream"}
+            {live ? "Pause updates" : "Resume updates"}
           </button>
         </div>
       </div>
@@ -262,7 +262,7 @@ export default function VirtualTable() {
           <input
             type="text"
             className="demo-search"
-            placeholder="Search findings (e.g. bucket, IAM)..."
+            placeholder="Filter findings (e.g. S3, IAM, certificate)..."
             value={searchQuery}
             onChange={(e) => {
               const val = e.target.value;
@@ -293,7 +293,7 @@ export default function VirtualTable() {
       >
         {rows === null ? (
           <div style={{ display: "grid", placeItems: "center", height: "100%", color: "var(--ink-3)", fontSize: ".9rem" }}>
-            Allocating {totalCount.toLocaleString()} synthetic records…
+            Allocating {totalCount.toLocaleString()} records…
           </div>
         ) : (
           <div className="vt-sizer" style={{ height: visibleRows.length * ROW_H }}>
@@ -320,7 +320,7 @@ export default function VirtualTable() {
       </div>
 
       <p className="demo-note">
-        <b>Engineered for data-dense enterprise UIs:</b> Up to 100,000 rows in memory, yet strictly ~14 active elements in the DOM tree. Mutations stream concurrently while scrolling with zero layout recalculation bottlenecks.
+        <b>How this works:</b> Rendering 50,000 table rows directly in React creates 50,000 DOM nodes, which freezes the browser tab. Virtual scrolling keeps only the rows currently inside your viewport (~14 nodes) in the DOM, so scrolling stays smooth even as data updates in the background.
       </p>
     </div>
   );

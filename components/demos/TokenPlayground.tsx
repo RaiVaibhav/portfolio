@@ -54,8 +54,8 @@ export default function TokenPlayground() {
     <div className="demo">
       <div className="demo-head">
         <div className="demo-title-group">
-          <span className="demo-title">Design Token & System Studio</span>
-          <span className="demo-sub-badge">Dynamic Cascading Variables</span>
+          <span className="demo-title">Design token playground</span>
+          <span className="demo-sub-badge">CSS custom properties</span>
         </div>
 
         <div className="demo-stats">
@@ -66,7 +66,7 @@ export default function TokenPlayground() {
             --radius <b>{radius}px</b>
           </span>
           <span className="stat">
-            mode <b>{density}</b>
+            density <b>{density}</b>
           </span>
         </div>
       </div>
@@ -74,7 +74,7 @@ export default function TokenPlayground() {
       <div className="tp-body">
         <div className="tp-controls">
           <div className="tp-field">
-            <label id="tp-primary-label">Primary Color Harmony</label>
+            <label id="tp-primary-label">Primary color</label>
             <div className="tp-swatches" role="group" aria-labelledby="tp-primary-label">
               {PALETTE.map((c) => (
                 <button
@@ -95,7 +95,7 @@ export default function TokenPlayground() {
 
           <div className="tp-field">
             <div className="tp-label-row">
-              <label htmlFor="tp-radius">Corner Radius Curve</label>
+              <label htmlFor="tp-radius">Corner radius</label>
               <span className="tp-val">{radius}px</span>
             </div>
             <input
@@ -109,7 +109,7 @@ export default function TokenPlayground() {
           </div>
 
           <div className="tp-field">
-            <label>Component Density Mode</label>
+            <label>Density</label>
             <div className="seg" role="group">
               <button
                 type="button"
@@ -119,7 +119,7 @@ export default function TokenPlayground() {
                   setDensity("compact");
                 }}
               >
-                Compact (Data-Dense)
+                Compact
               </button>
               <button
                 type="button"
@@ -129,7 +129,7 @@ export default function TokenPlayground() {
                   setDensity("spacious");
                 }}
               >
-                Spacious (Editorial)
+                Comfortable
               </button>
             </div>
           </div>
@@ -155,15 +155,15 @@ export default function TokenPlayground() {
           >
             <div className="tp-card">
               <div className="tp-card-head">
-                <h4>Vendor SOC 2 Compliance Review</h4>
-                <span className="tp-chip alert">Expiring in 18 days</span>
+                <h4>Vendor SOC 2 Review</h4>
+                <span className="tp-chip alert">Action needed</span>
               </div>
               <p>
-                Continuous cloud asset scanning detected unencrypted S3 read policies on staging environment.
+                An automated check flagged public read access on an S3 bucket in staging.
               </p>
               <div className="tp-btn-row">
-                <button type="button" className="tp-btn primary">Remediate Finding</button>
-                <button type="button" className="tp-btn ghost">Request Evidence</button>
+                <button type="button" className="tp-btn primary">Fix issue</button>
+                <button type="button" className="tp-btn ghost">Review details</button>
               </div>
             </div>
 
@@ -177,7 +177,7 @@ export default function TokenPlayground() {
       </div>
 
       <p className="demo-note">
-        <b>Cascading Design Architecture:</b> Child elements inherit semantic tokens via CSS variables rather than hardcoded rules. Updating the design contract instantly restyles the entire surface while preserving accessibility contrast ratios.
+        <b>Why tokens:</b> Components read semantic CSS variables instead of hardcoded hex codes. Changing a token updates every related element instantly across the UI without touching component code.
       </p>
     </div>
   );

@@ -32,7 +32,7 @@ export default function CommandPalette({
         id: "nav-demos",
         category: "Navigation",
         title: "Jump to Live Demos",
-        subtitle: "100k Virtual table & Token studio",
+        subtitle: "50k virtual table & design tokens",
         badge: "D",
         action: () => {
           window.location.hash = "#demos";
@@ -42,8 +42,8 @@ export default function CommandPalette({
       {
         id: "nav-arch",
         category: "Navigation",
-        title: "Jump to Architecture Blueprint",
-        subtitle: "Interactive system topologies",
+        title: "Jump to Architecture",
+        subtitle: "How systems I've built fit together",
         badge: "A",
         action: () => {
           window.location.hash = "#architecture";
@@ -53,7 +53,7 @@ export default function CommandPalette({
       {
         id: "nav-work",
         category: "Navigation",
-        title: "Jump to Work Experience",
+        title: "Jump to Experience",
         subtitle: "Scrut, Kami, Klinify, Appknox",
         badge: "W",
         action: () => {
@@ -65,7 +65,7 @@ export default function CommandPalette({
         id: "nav-proj",
         category: "Navigation",
         title: "Jump to Projects",
-        subtitle: "AgentGate, Svelte Core, Open Source",
+        subtitle: "AgentGate, Bandhu, Svelte Core",
         badge: "P",
         action: () => {
           window.location.hash = "#projects";
@@ -75,8 +75,8 @@ export default function CommandPalette({
       {
         id: "nav-toolkit",
         category: "Navigation",
-        title: "Jump to Toolkit & Skills",
-        subtitle: "React, Next.js, FastAPI, pgvector",
+        title: "Jump to Toolkit",
+        subtitle: "Technologies and tools I use",
         badge: "T",
         action: () => {
           window.location.hash = "#toolkit";

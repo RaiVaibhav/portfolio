@@ -16,53 +16,53 @@ type DeepDive = {
 const DEEP_DIVES: Record<string, DeepDive> = {
   "Scrut Automation": {
     challenge:
-      "Legacy compliance UI suffered severe frame drops (>250ms render blocks) when rendering streaming finding tables with tens of thousands of cloud compliance assets.",
+      "The findings table had to render tens of thousands of cloud compliance assets while receiving real-time updates. The existing UI was locking up the main thread whenever large batches came in.",
     solution:
-      "Rearchitected findings management using a headless virtualization window, uncoupled network state mutations from the React render loop via an immutable buffer, and established a monorepo UI design system across pods.",
+      "Rebuilt the table with windowed virtual scrolling, moved incoming stream updates into a separate buffer outside the React render cycle, and built a shared design system for the pod.",
     impact:
-      "Maintained rock-solid 60 FPS scrolling across 50k+ records, slashed initial dashboard bundle size by 38%, and standardized UI velocity across 14 engineers.",
+      "Smooth 60 FPS scrolling through 50k+ records, a 38% drop in initial bundle size, and a consistent UI foundation for 14 engineers.",
     architectureNotes: [
-      "Virtualization windowing with dynamic overscan buffer",
-      "Decoupled WebSocket delta-ingestion into throttled state chunks",
-      "Multi-package Nx workspace with shared design token primitives",
+      "Virtual list rendering with dynamic overscan buffer",
+      "Throttled state buffer for WebSocket updates",
+      "Shared component tokens in an Nx monorepo",
     ],
   },
   "Kami Vision": {
     challenge:
-      "A fragmented B2C Vue codebase required complete architectural modernization into React without interrupting active revenue streams or camera subscription services.",
+      "The B2C web app was built on an older Vue codebase that had become hard to maintain, and we needed to move it to React without breaking active camera subscriptions or camera streaming.",
     solution:
-      "Engineered an incremental strangler migration pattern into React with Storybook design tokens, standardizing inconsistent backend API shapes via strict TypeScript data transformers.",
+      "Migrated the app route-by-route using the strangler pattern, built a Storybook component library with tokenized themes, and added TypeScript transformers to normalize messy backend responses.",
     impact:
-      "Successfully migrated 100% of user flows with zero downtime, introduced seamless Stripe checkout conversion, and cut regression bugs by over 50%.",
+      "Migrated all user flows with zero downtime, introduced a streamlined Stripe checkout, and significantly reduced UI bugs.",
     architectureNotes: [
-      "Strangler fig pattern for zero-downtime framework transition",
-      "Contract-driven TypeScript API transformation layer",
-      "Storybook component isolation with custom dark/light theme tokens",
+      "Incremental route migration (strangler pattern)",
+      "TypeScript data transformation layer for legacy APIs",
+      "Storybook design system with dark/light themes",
     ],
   },
   Klinify: {
     challenge:
-      "Data-heavy clinic patient management dashboards suffered from sluggish load times and lacked customizable white-label branding for multi-tenant clinics.",
+      "Clinic dashboards were slow to load heavy patient records, and each clinic needed custom branding and colors without maintaining separate code forks.",
     solution:
-      "Re-engineered rendering strategy with aggressive memoization, selective SSR/SSG for dynamic medical directory pages, and created a runtime token theming engine.",
+      "Optimized rendering with selective memoization, added SSR/SSG for static directory pages, and built a dynamic CSS variable themer based on clinic tenant settings.",
     impact:
-      "Cut dashboard load time by 45%, achieved 99+ Lighthouse performance scores, and enabled instant white-label clinic onboarding.",
+      "Cut dashboard load times by 45% and made onboarding new clinics instant with zero custom deployments.",
     architectureNotes: [
-      "Dynamic token injection based on clinic tenant metadata",
-      "CouchDB map-reduce indexing for instant patient history querying",
-      "SSR caching for static clinical documentation",
+      "Tenant-based CSS variable theming",
+      "CouchDB map-reduce indexing for fast patient history lookup",
+      "SSR caching for clinic directory and medical records",
     ],
   },
   Appknox: {
     challenge:
-      "Mobile security analysts were forced to run binary vulnerability scans serially, resulting in massive operational bottlenecks and high turnaround times.",
+      "Security analysts had to wait for mobile vulnerability scans to finish one after another, which slowed down customer reports.",
     solution:
-      "Designed a concurrent job orchestrator UI in Ember.js supporting parallel scan execution and live vulnerability triage tracking.",
+      "Built an Ember.js interface that allowed parallel scan execution with live status indicators and triage tracking.",
     impact:
-      "Reduced vulnerability turnaround time by 65% and merged 25 core pull requests directly into their open-source repository.",
+      "Reduced scan turnaround times by 65% and contributed 25 pull requests back into the open-source frontend.",
     architectureNotes: [
-      "Parallel asynchronous scan lifecycle state machine",
-      "Open source contributions to appknox/irene",
+      "State machine for parallel async scan jobs",
+      "25 pull requests merged into appknox/irene",
     ],
   },
 };
@@ -86,11 +86,11 @@ export default function Work() {
         <Reveal>
           <div className="sec-header-row">
             <div>
-              <span className="eyebrow">Track Record</span>
+              <span className="eyebrow">Experience</span>
               <h2 className="sec-title">Where I&rsquo;ve Worked</h2>
               <p className="sec-intro">
-                Over 7 years architecting resilient web applications, data pipelines, and design systems.
-                Most systems live behind auth, so public product links and architectural deep dives are provided below.
+                Over 7 years building frontends, data-heavy dashboards, and design systems.
+                Most of these products sit behind login, so I&rsquo;ve linked product tours and included brief technical notes on each role.
               </p>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function Work() {
                         aria-expanded={isOpen}
                       >
                         <span className="deepdive-icon">{isOpen ? "▲" : "▼"}</span>
-                        <span>{isOpen ? "Close Architecture Deep Dive" : "Inspect Architecture Deep Dive"}</span>
+                        <span>{isOpen ? "Hide technical notes" : "Technical notes"}</span>
                       </button>
                     </div>
                   )}
@@ -168,20 +168,20 @@ export default function Work() {
                     <div className="deepdive-panel">
                       <div className="deepdive-grid">
                         <div className="deepdive-col">
-                          <h5>The Challenge</h5>
+                          <h5>The problem</h5>
                           <p>{deepDive.challenge}</p>
                         </div>
                         <div className="deepdive-col">
-                          <h5>The Architecture Solution</h5>
+                          <h5>What I did</h5>
                           <p>{deepDive.solution}</p>
                         </div>
                         <div className="deepdive-col">
-                          <h5>Quantified Impact</h5>
+                          <h5>The result</h5>
                           <p className="impact-text">{deepDive.impact}</p>
                         </div>
                       </div>
                       <div className="deepdive-notes">
-                        <h6>Key Architectural Primitives</h6>
+                        <h6>Technical details</h6>
                         <ul>
                           {deepDive.architectureNotes.map((note, i) => (
                             <li key={i}>{note}</li>

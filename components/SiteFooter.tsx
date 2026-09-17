@@ -22,10 +22,10 @@ export default function SiteFooter() {
       <div className="wrap">
         <Reveal>
           <div className="foot-content">
-            <span className="eyebrow">Get In Touch</span>
-            <h2 className="foot-title">Let&rsquo;s engineer something remarkable.</h2>
+            <span className="eyebrow">Contact</span>
+            <h2 className="foot-title">Get in touch</h2>
             <p className="foot-intro">
-              Whether your frontend has outgrown the architecture holding it up, or you need a senior/staff engineer to build high-performance data systems from day zero, let&rsquo;s talk.
+              I&rsquo;m open to senior and staff frontend roles. If you&rsquo;re building a data-heavy application, scaling a design system, or have a frontend that needs solid architecture, feel free to reach out.
             </p>
 
             <div className="foot-actions">
@@ -59,7 +59,7 @@ export default function SiteFooter() {
               {site.firstName} {site.lastName}
             </span>
             <span className="colophon-desc">
-              Built with Next.js 16 App Router &amp; TypeScript. Zero CSS frameworks, 100% bespoke design tokens.
+              Built with Next.js, React, and TypeScript. Styled with vanilla CSS.
             </span>
           </div>
 

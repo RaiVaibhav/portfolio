@@ -25,160 +25,160 @@ type Architecture = {
 const ARCHITECTURES: Architecture[] = [
   {
     id: "scrut",
-    title: "Real-Time Findings Stream",
-    subtitle: "Handling 50k+ security risks without browser stutter",
+    title: "Findings stream",
+    subtitle: "Streaming 50k+ security findings without locking the browser tab",
     badge: "Scrut Automation",
     nodes: [
       {
         id: "ingest",
-        name: "Asset Collectors",
+        name: "Asset collectors",
         tag: "Ingestion",
         latency: "~500ms batch",
         tech: "Cloud APIs / K8s Daemons",
-        desc: "Gathers telemetry and configuration posture across AWS, Azure, GCP, and Kubernetes clusters.",
-        decision: "Batched and delta-hashed at the agent level to prevent overwhelming downstream ingestion.",
+        desc: "Collects cloud configuration across AWS, Azure, GCP, and Kubernetes.",
+        decision: "Batched and hashed at the agent level so raw telemetry doesn't overload downstream services.",
       },
       {
         id: "eval",
-        name: "Policy Evaluation",
+        name: "Policy evaluation",
         tag: "Engine",
         latency: "< 80ms p99",
         tech: "FastAPI / Python Workers",
-        desc: "Evaluates posture against SOC 2, ISO 27001, and HIPAA compliance checks.",
-        decision: "Stateless workers with distributed caching in Redis for compliance rule sets.",
+        desc: "Evaluates cloud resources against compliance rules like SOC 2 and ISO 27001.",
+        decision: "Kept stateless with cached rule sets in Redis so workers scale out cleanly.",
       },
       {
         id: "stream",
-        name: "Multiplexed Socket",
+        name: "WebSocket stream",
         tag: "Transport",
         latency: "< 20ms",
         tech: "WebSockets / Redis PubSub",
-        desc: "Streams security finding mutations and remediation state updates in real time to connected browser clients.",
-        decision: "Topic-based room subscriptions so clients only receive updates for their active compliance scope.",
+        desc: "Pushes finding updates and fixes directly to the user's browser as they happen.",
+        decision: "Scoped subscriptions so users only receive updates for the specific project they have open.",
       },
       {
         id: "store",
-        name: "Normalized Client Cache",
+        name: "Client-side state buffer",
         tag: "Frontend State",
         latency: "< 1ms",
         tech: "Zustand / Immer / Worker",
-        desc: "Buffers incoming mutation deltas in memory and updates finding states by ID without re-creating arrays.",
-        decision: "Keeps array mutations outside the React render path; dispatches throttled frame updates.",
+        desc: "Buffers incoming changes in memory and updates items by ID without copying huge lists.",
+        decision: "Keeps array mutations outside React's render loop, throttling updates to animation frames.",
       },
       {
         id: "virtual",
-        name: "Windowed Virtual DOM",
+        name: "Virtual list renderer",
         tag: "UI Presentation",
         latency: "16.6ms (60 FPS)",
         tech: "React 19 / Custom Virtualizer",
-        desc: "Renders 50,000+ items with only ~14 active elements in the browser DOM at any time.",
-        decision: "Absolute translateY positioning + overscan buffer avoids browser reflow thrashing during high-speed scroll.",
+        desc: "Keeps only the ~14 rows currently visible in the browser DOM, even when searching 50,000 items.",
+        decision: "Virtualization keeps DOM nodes low, so scrolling stays smooth even on low-spec laptops.",
       },
     ],
   },
   {
     id: "agentgate",
-    title: "AgentGate MCP Gateway",
-    subtitle: "Zero-trust tool isolation and audit proxy for AI agents",
+    title: "AgentGate MCP gateway",
+    subtitle: "Security and audit proxy for AI agents running tools",
     badge: "Open Source / Agentic AI",
     nodes: [
       {
         id: "agent",
-        name: "AI Agent Client",
+        name: "AI agent client",
         tag: "Client",
         latency: "Dynamic",
         tech: "Claude / GPT-4o / Local LLM",
-        desc: "Autonomous coding or ops agent attempting to invoke external tools (e.g. GitHub, Stripe, AWS).",
-        decision: "Agent receives ONLY the gateway URL; never possesses raw upstream production credentials.",
+        desc: "An AI agent (like Claude or GPT-4o) trying to run tools like GitHub, Stripe, or AWS APIs.",
+        decision: "The agent talks only to the gateway and never has direct access to upstream API keys.",
       },
       {
         id: "mcp",
-        name: "MCP Protocol Gateway",
+        name: "MCP gateway",
         tag: "Proxy",
         latency: "< 4ms",
         tech: "TypeScript / JSON-RPC",
-        desc: "Intercepts Model Context Protocol tool discovery and method execution requests.",
-        decision: "Strict schema validation rejects malformed tool invocations before evaluating policies.",
+        desc: "Inspects Model Context Protocol (MCP) tool discovery and method execution requests.",
+        decision: "Validates JSON schemas upfront before passing requests to policies or backends.",
       },
       {
         id: "policy",
-        name: "Fine-Grained Policy Engine",
+        name: "Policy engine",
         tag: "Security Guard",
         latency: "< 8ms",
         tech: "AST & Regex Guardrails",
-        desc: "Enforces declarative permissions: allow repository read, block repository delete, redact sensitive keys.",
-        decision: "Deterministic rule evaluation stops destructive agent hallucinations in their tracks.",
+        desc: "Checks requests against permissions—for example, allow reading a repo but block deleting it.",
+        decision: "Deterministic rule checks prevent agents from accidentally running destructive commands.",
       },
       {
         id: "upstream",
-        name: "Upstream SaaS APIs",
+        name: "Upstream APIs",
         tag: "Execution",
         latency: "API dependent",
         tech: "GitHub / Stripe / Slack",
-        desc: "Gateway injects authorized ephemeral credentials and dispatches the sanitized API call.",
-        decision: "Credentials rotated on each invocation; revocable with one click.",
+        desc: "The gateway adds temporary, scoped credentials and forwards the approved request.",
+        decision: "Tokens are generated per call and can be revoked instantly from the dashboard.",
       },
       {
         id: "audit",
-        name: "Immutable Audit Ledger",
+        name: "Audit log",
         tag: "Compliance",
         latency: "Async background",
         tech: "Append-Only Event Store",
-        desc: "Full trace recording of inputs, tool parameters, policy verdict, and sanitized output payload.",
-        decision: "Essential for enterprise compliance when deploying autonomous agents into production.",
+        desc: "Records prompt context, tool parameters, policy decisions, and sanitized responses.",
+        decision: "Provides an immutable trail so security teams can review agent actions.",
       },
     ],
   },
   {
     id: "mfe",
-    title: "Micro-Frontend Federation Mesh",
-    subtitle: "Independent deployment pods with shared design contracts",
+    title: "Micro-frontend architecture",
+    subtitle: "Independent team deployments with a shared design system",
     badge: "Enterprise Architecture",
     nodes: [
       {
         id: "shell",
-        name: "Host Shell App",
+        name: "Host shell",
         tag: "Core Shell",
         latency: "< 50ms bootstrap",
         tech: "Next.js / Nx Monorepo",
-        desc: "Orchestrates top-level application layout, global authentication, and route switching between business domains.",
-        decision: "Zero business logic in the host shell; only handles global navigation and authentication tokens.",
+        desc: "Handles top-level layout, user authentication, and routing between different feature apps.",
+        decision: "Keeps business logic out of the shell so feature teams can deploy without shell changes.",
       },
       {
         id: "registry",
-        name: "Remote Module Registry",
+        name: "Dynamic module loader",
         tag: "Module Federation",
         latency: "< 15ms resolution",
         tech: "Webpack 5 / Dynamic Import",
-        desc: "Dynamically resolves remote entries and handles asset chunk manifest versioning with graceful fallback on failure.",
-        decision: "Runtime manifest polling enables pods to ship microfrontends independently without re-deploying the host.",
+        desc: "Loads remote bundles at runtime based on route, falling back gracefully if one fails.",
+        decision: "Allows individual teams to release changes independently without coordinated deployments.",
       },
       {
         id: "tokens",
-        name: "Design Token Contract",
+        name: "Design tokens",
         tag: "Design System",
         latency: "0ms runtime",
         tech: "CSS Variables / Primitive Tokens",
-        desc: "Synchronizes theme variables, typography scales, and component primitives across all independently deployed apps.",
-        decision: "Single source of truth via CSS variables avoids shipping multiple duplicated CSS bundles across micro-apps.",
+        desc: "Shares typography, colors, and layout scales across apps using CSS custom properties.",
+        decision: "Using CSS variables avoids duplicating component styles across separately loaded bundles.",
       },
       {
         id: "sandbox",
-        name: "Isolated Domain Pods",
+        name: "Feature modules",
         tag: "Business Domains",
         latency: "Lazy loaded on route",
         tech: "React 19 / TypeScript",
-        desc: "Autonomous feature modules (e.g. Findings Management, Compliance Audits, Asset Inventory) owned by separate teams.",
-        decision: "Scoped state boundaries prevent memory leaks and isolate runtime errors to individual panels.",
+        desc: "Self-contained apps (e.g., findings, audits, inventory) owned by separate teams.",
+        decision: "Scoped boundaries keep errors or heavy memory usage isolated to that view.",
       },
       {
         id: "bus",
-        name: "Cross-Boundary Event Bus",
+        name: "Event bus",
         tag: "Inter-App Comms",
         latency: "< 1ms broadcast",
         tech: "Typed Custom Events",
-        desc: "Facilitates loosely-coupled communication between micro-apps (e.g. workspace changes, telemetry events) without shared memory.",
-        decision: "Strictly typed custom event schemas prevent breaking changes across team boundaries.",
+        desc: "Lets different apps communicate (like workspace changes) without tight coupling.",
+        decision: "Uses typed browser events so teams don't depend on each other's internal state.",
       },
     ],
   },
@@ -205,11 +205,10 @@ export default function ArchitectureBlueprint() {
         <Reveal>
           <div className="sec-header-row">
             <div>
-              <span className="eyebrow">Systems Thinking</span>
-              <h2 className="sec-title">Architecture Blueprints</h2>
+              <span className="eyebrow">Architecture</span>
+              <h2 className="sec-title">System Architecture</h2>
               <p className="sec-intro">
-                Interactive topologies of production systems I&rsquo;ve designed and shipped.
-                Click any stage to inspect the technical decisions and latency budgets.
+                A look at how different parts of systems I&rsquo;ve worked on fit together. Click any step to see what it does and why it was built that way.
               </p>
             </div>
 
@@ -277,11 +276,11 @@ export default function ArchitectureBlueprint() {
 
                 <div className="inspector-body">
                   <div className="inspector-sec">
-                    <h4>Function & Data Flow</h4>
+                    <h4>What this step does</h4>
                     <p>{selectedNode.desc}</p>
                   </div>
                   <div className="inspector-sec">
-                    <h4>Architectural Trade-Off & Decision</h4>
+                    <h4>Why it was built this way</h4>
                     <p>{selectedNode.decision}</p>
                   </div>
                 </div>
