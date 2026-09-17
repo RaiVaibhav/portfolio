@@ -5,13 +5,22 @@ import { playClick, playPop, toggleAudio, isAudioMuted } from "@/lib/audio";
 import { showToast } from "./Toast";
 
 const LINKS = [
-  { href: "#demos", label: "Demos" },
-  { href: "#architecture", label: "Architecture" },
-  { href: "#work", label: "Work" },
+  { href: "#demos", label: "Benchmarks" },
+  { href: "#architecture", label: "Blueprints" },
+  { href: "#work", label: "Experience" },
   { href: "#projects", label: "Projects" },
+  { href: "#polymath", label: "Beyond" },
   { href: "#toolkit", label: "Toolkit" },
   { href: "#contact", label: "Contact" },
 ];
+
+const ACCENTS = [
+  { id: "sage", name: "Sage", dot: "#76b3a2" },
+  { id: "indigo", name: "Indigo", dot: "#818cf8" },
+  { id: "amber", name: "Amber", dot: "#fb923c" },
+  { id: "plum", name: "Plum", dot: "#c084fc" },
+  { id: "cyan", name: "Cyan", dot: "#22d3ee" },
+] as const;
 
 export default function SiteHeader({
   onOpenCommandPalette,
@@ -89,11 +98,14 @@ export default function SiteHeader({
             playClick();
             close();
           }}
+          aria-label="Vaibhav Rai - Staff Frontend Engineer"
         >
           <span className="mark-dot" aria-hidden="true">VR</span>
           <span className="mark-text">
-            <b>Vaibhav Rai</b>
-            <span className="mark-sub">Staff Frontend</span>
+            <span className="mark-name">Vaibhav Rai</span>
+            <span className="mark-sub">
+              Staff Frontend<span className="mark-sub-suffix"> Engineer</span>
+            </span>
           </span>
         </a>
 
@@ -138,6 +150,8 @@ export default function SiteHeader({
             </button>
           )}
 
+          <AccentToggle />
+
           <button
             type="button"
             className="icon-btn audio-btn"
@@ -175,11 +189,56 @@ export default function SiteHeader({
               setOpen((v) => !v);
             }}
           >
-            {open ? "Close" : "Menu"}
+            <span className="menu-btn-label">{open ? "Close" : "Menu"}</span>
           </button>
         </div>
       </div>
     </header>
+  );
+}
+
+function AccentToggle() {
+  const [accent, setAccent] = useState("sage");
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("vkr-accent");
+      if (saved) {
+        setAccent(saved);
+        document.documentElement.setAttribute("data-accent", saved);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  function cycleAccent() {
+    playPop();
+    const currentIndex = ACCENTS.findIndex((a) => a.id === accent);
+    const next = ACCENTS[(currentIndex + 1) % ACCENTS.length];
+    setAccent(next.id);
+    document.documentElement.setAttribute("data-accent", next.id);
+    try {
+      localStorage.setItem("vkr-accent", next.id);
+    } catch {
+      // ignore
+    }
+    showToast(`Accent set to ${next.name}`);
+  }
+
+  const current = ACCENTS.find((a) => a.id === accent) || ACCENTS[0];
+
+  return (
+    <button
+      type="button"
+      className="icon-btn accent-btn"
+      onClick={cycleAccent}
+      title={`Accent Palette: ${current.name} (click to cycle)`}
+      aria-label={`Cycle accent palette. Current: ${current.name}`}
+    >
+      <span className="accent-swatch" style={{ background: current.dot }} />
+      <span className="accent-name">{current.name}</span>
+    </button>
   );
 }
 
