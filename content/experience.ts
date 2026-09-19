@@ -7,17 +7,17 @@ export const experience: Job[] = [
     url: "https://www.scrut.io/product-tour",
     urlLabel: "Scrut product tour",
     urlNote: "GRC platform · the product I worked on",
-    role: "Senior Software Engineer, Frontend",
+    role: "Senior Software Engineer",
     note: "Promoted from SDE II (Jun 2024) to Senior (Apr 2025), same team",
     years: "2024 — 2026",
     bullets: [
-      "Owned the React frontend architecture for the core security products, **findings and vulnerability management**. Made the technical calls, reviewed the code and coordinated releases as the senior engineer on the pod.",
-      "Rearchitected the app around a **UI design system spanning multiple modules**, the layer the rest of the frontend pod built against every sprint.",
+      "Owned frontend architecture and built backend APIs across the core security products, **findings and vulnerability management**, using **FastAPI, Python and PostgreSQL**.",
+      "Rearchitected the app around a **UI design system spanning multiple modules**, the layer the rest of the pod built against every sprint.",
       "Added **virtualization and a reusable real-time table** for live, data-heavy views, then used code splitting to cut initial bundle size and load time.",
       "Built the dashboards that surface security findings and incidents, so customer teams could resolve issues faster.",
       "Integrated PostHog and worked with PMs and designers to add business-level signals and analytics.",
     ],
-    chips: ["React", "TypeScript", "Design system", "Virtualization", "Micro frontends", "Nx", "PostHog"],
+    chips: ["FastAPI", "Python", "PostgreSQL", "React", "TypeScript", "Design system", "Virtualization", "Nx", "PostHog"],
   },
   {
     company: "Kami Vision",
@@ -25,14 +25,14 @@ export const experience: Job[] = [
     url: "https://kami-ai.com/",
     urlLabel: "Kami AI",
     urlNote: "Kami Cloud, the B2C app I rewrote",
-    role: "Senior Software Engineer, Frontend",
+    role: "Senior Software Engineer",
     years: "2022 — 2024",
     groups: [
       {
         label: "Kami Cloud · B2C",
         bullets: [
           "Rewrote the Vue.js app in React and built a reusable design system under it with **Storybook and custom theming**.",
-          "Added responsive layouts, internationalization, code splitting, lazy loading and **Stripe payments**, with integration tests behind them.",
+          "Added responsive layouts, internationalization, code splitting, lazy loading and **Stripe payments with backend webhook handling**, with integration tests behind them.",
         ],
       },
       {
@@ -44,12 +44,12 @@ export const experience: Job[] = [
       },
     ],
     shift: ["Vue.js", "React"],
-    chips: ["React", "Next.js", "Vue.js", "TypeScript", "Storybook", "Stripe", "i18n", "SSR / SSG"],
+    chips: ["React", "Next.js", "Node.js", "TypeScript", "Storybook", "Stripe", "i18n", "SSR / SSG"],
   },
   {
     company: "Milky Way AI",
     location: "Remote",
-    role: "Freelance Frontend Engineer",
+    role: "Freelance Software Engineer",
     years: "2022",
     bullets: [
       "Built a dashboard that automates stock replenishment and gives retail operations a real-time read on inventory.",
@@ -61,7 +61,7 @@ export const experience: Job[] = [
     url: "https://wayground.com/",
     urlLabel: "Wayground",
     urlNote: "Quizizz, renamed since I was there",
-    role: "Freelance Frontend Engineer",
+    role: "Freelance Software Engineer",
     years: "2021 — 2022",
     bullets: [
       "Worked the migration off Krafty onto Nuxt and built the complex UI components that came with it.",
@@ -72,14 +72,14 @@ export const experience: Job[] = [
   {
     company: "Klinify",
     location: "Remote",
-    role: "Frontend Engineer",
+    role: "Software Engineer",
     years: "2019 — 2021",
     bullets: [
       "Cut dashboard load time by **45%** with memoization, API optimizations and code splitting.",
-      "Built a configurable design system carrying **per-clinic branding, themes and layouts**, with SSR and SSG for the dynamic content and SEO.",
-      "Added internationalization, Flask APIs and CouchDB map-reduce transformations.",
+      "Built a configurable design system carrying **per-clinic branding, themes and layouts**, with SSR and SSG for dynamic content.",
+      "Wrote backend **Flask APIs and CouchDB map-reduce transformations** to handle clinic workflows and patient records.",
     ],
-    chips: ["React", "SSR / SSG", "Design system", "Flask", "CouchDB", "i18n"],
+    chips: ["React", "Flask", "CouchDB", "Python", "SSR / SSG", "Design system", "i18n"],
   },
   {
     company: "Appknox",
@@ -87,13 +87,13 @@ export const experience: Job[] = [
     url: "https://www.appknox.com/",
     urlLabel: "Appknox",
     urlNote: "Mobile app security scanning",
-    role: "Frontend Engineer",
+    role: "Software Engineer",
     years: "2019",
     bullets: [
       "Built the Ember.js interface for running and managing application security scans, so customers could run **several scans in parallel** instead of one at a time. Throughput went up, turnaround came down.",
       "**25 pull requests merged** into [appknox/irene](https://github.com/appknox/irene), their open source frontend.",
     ],
-    chips: ["Ember.js", "AppSec", "Open source"],
+    chips: ["Ember.js", "AppSec", "APIs", "Open source"],
   },
   {
     company: "Squadcast",
@@ -101,12 +101,12 @@ export const experience: Job[] = [
     url: "https://www.solarwinds.com/it-incident-response-software",
     urlLabel: "SolarWinds Incident Response",
     urlNote: "Squadcast, acquired by SolarWinds",
-    role: "Software Engineer Intern",
+    role: "Software Developer Intern",
     years: "2018 — 2019",
     bullets: [
-      "Built a **bidirectional sync between Slack and Squadcast chat** so incident updates landed in real time on both sides.",
-      "Wrote Enzyme tests across the frontend, shipped serverless Kubeless microservices, and stood up an Artifactory registry for private npm packages.",
+      "Built a **bidirectional sync between Slack and Squadcast chat** (Node.js and WebSockets) so incident updates landed in real time on both sides.",
+      "Wrote Enzyme tests across the frontend, shipped backend serverless **Kubeless microservices**, and stood up an Artifactory registry for private npm packages.",
     ],
-    chips: ["React", "Node.js", "Kubeless", "Enzyme", "Artifactory"],
+    chips: ["React", "Node.js", "WebSockets", "Kubeless", "Enzyme", "Artifactory"],
   },
 ];

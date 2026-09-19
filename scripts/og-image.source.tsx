@@ -47,13 +47,12 @@ export default function OgImage() {
           </div>
           <div style={{ fontSize: 38, color: "#42655b", marginTop: 8 }}>{site.role}</div>
           <div style={{ fontSize: 27, color: "#414845", marginTop: 26, maxWidth: 900, lineHeight: 1.4 }}>
-            React, Next.js and TypeScript. Design systems, data-heavy UI, and the migrations that
-            touch every screen.
+            Frontend-focused full stack, design systems, solid backend APIs, RAG pipelines &amp; evals.
           </div>
         </div>
 
         <div style={{ display: "flex", gap: 12 }}>
-          {["Design systems", "Micro frontends", "Web performance"].map((t) => (
+          {["Frontend & Design Systems", "Full Stack & APIs", "RAG & Evals"].map((t) => (
             <div
               key={t}
               style={{

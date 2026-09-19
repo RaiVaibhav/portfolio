@@ -17,23 +17,23 @@ export default function Focus() {
               <span className="stat">Design systems</span>
               <h3>Three built from scratch</h3>
               <p>
-                Rearchitected the UI design system across multiple modules at Scrut, the layer the rest of the frontend pod built against. Storybook and custom theming at Kami Vision. Per-clinic branding, themes and layouts at Klinify.
+                Rearchitected the UI design system across multiple modules at Scrut, the layer the rest of the team built against every sprint. Storybook and custom theming at Kami Vision. Per-clinic branding, themes and layouts at Klinify.
               </p>
             </div>
 
             <div className="cap">
-              <span className="stat">Data-heavy interfaces</span>
-              <h3>Live tables that stay fast</h3>
+              <span className="stat">Full stack &amp; backend</span>
+              <h3>APIs and services that hold up</h3>
               <p>
-                Virtualization and a reusable real-time table for live security data at Scrut, then code splitting to cut the initial bundle. At Klinify, 45% off dashboard load through memoization, API work and splitting.
+                FastAPI, Python and Postgres at Scrut for live security findings and vulnerability views. Flask APIs and CouchDB map-reduce at Klinify. Real-time chat sync over WebSockets and serverless Kubeless microservices at Squadcast, plus Stripe webhooks at Kami Vision.
               </p>
             </div>
 
             <div className="cap">
-              <span className="stat">Migrations</span>
-              <h3>The ones that touch everything</h3>
+              <span className="stat">RAG &amp; evals</span>
+              <h3>Context retrieval that doesn&rsquo;t hallucinate</h3>
               <p>
-                Vue to React at Kami Vision, with a design system built underneath it. Krafty to Nuxt at Quizizz. Both shipped while the product kept moving.
+                Agentic RAG pipelines with pgvector and semantic search in Bandhu. Set up Langfuse evals to catch hallucinations, score retrieval quality, and keep crisis safety rails rock solid. Tool security and permissions over MCP in AgentGate.
               </p>
             </div>
 
