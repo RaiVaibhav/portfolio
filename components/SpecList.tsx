@@ -5,28 +5,26 @@ import Reveal from "./Reveal";
 export default function SpecList({
   id,
   title,
-  intro,
   rows,
-  tone,
 }: {
   id: string;
   title: string;
-  intro?: string;
   rows: SpecRow[];
-  tone?: "sand";
 }) {
   return (
-    <section className={`sec${tone === "sand" ? " sec-sand" : ""}`} id={id}>
+    <section className="sec" id={id}>
       <div className="wrap">
         <Reveal>
-          <h2 className="sec-title">{title}</h2>
-          {intro ? <p className="sec-intro">{intro}</p> : null}
+          <div className="sec-head">
+            <span className="tag mono">{title}</span>
+            <span className="fill" />
+          </div>
         </Reveal>
 
         <Reveal as="dl">
           {rows.map((r) => (
             <div className="row" key={r.label}>
-              <dt>{r.label}</dt>
+              <dt className="mono">{r.label}</dt>
               <dd>{rich(r.value)}</dd>
             </div>
           ))}

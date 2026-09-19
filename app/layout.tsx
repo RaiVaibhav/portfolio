@@ -1,21 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Be_Vietnam_Pro, JetBrains_Mono } from "next/font/google";
+import { Archivo, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-/** The same face Bandhu is built in. The portfolio should look like the same hand. */
-const beVietnam = Be_Vietnam_Pro({
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--f-display",
   display: "swap",
 });
 
-/** Only used where digits have to line up: the live demo counters. */
-const mono = JetBrains_Mono({
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--f-body",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-mono",
+  variable: "--f-mono",
   display: "swap",
 });
 
@@ -69,8 +74,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f9f9f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#141917" },
+    { media: "(prefers-color-scheme: light)", color: "#E9EAE6" },
+    { media: "(prefers-color-scheme: dark)", color: "#0D1014" },
   ],
 };
 
@@ -103,13 +108,13 @@ const PERSON = {
   sameAs: [site.github, site.linkedin],
 };
 
-const BOOT = `(function(){try{var r=document.documentElement;r.classList.add("js");var t=localStorage.getItem("vkr-theme");if(t==="dark"||t==="light")r.setAttribute("data-theme",t);window.addEventListener("pointermove",function(e){r.style.setProperty("--mouse-x",e.clientX+"px");r.style.setProperty("--mouse-y",e.clientY+"px")},{passive:true})}catch(e){}})()`;
+const BOOT = `(function(){try{var r=document.documentElement;r.classList.add("js");var t=localStorage.getItem("vkr-theme");if(t==="dark"||t==="light")r.setAttribute("data-theme",t);}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${beVietnam.variable} ${mono.variable}`}
+      className={`${archivo.variable} ${newsreader.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>
