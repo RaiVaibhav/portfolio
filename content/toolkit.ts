@@ -2,11 +2,12 @@ import type { SpecRow } from "./types";
 
 export const toolkit: SpecRow[] = [
   { label: "Frontend", value: "React.js, Next.js, Vue.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS" },
-  { label: "State & data", value: "Redux, Zustand, React Query, REST APIs, WebSockets" },
+  { label: "Real-time & streaming", value: "WebSockets, Server-Sent Events (SSE), WebRTC, live stream buffering, event-driven state" },
+  { label: "State & data", value: "Zustand, Redux, React Query, REST APIs" },
   { label: "Testing", value: "Jest, Cypress, Storybook, Enzyme" },
   {
     label: "Architecture",
-    value: "Design systems, micro frontends, Nx monorepo, SSR, SSG, component libraries, i18n, virtualization, performance work",
+    value: "Enterprise workflow & rule authoring engines, design systems, micro frontends, Nx monorepo, virtualization, SSR/SSG, legacy migrations",
   },
   { label: "Backend", value: "FastAPI, Python, Node.js, PostgreSQL, pgvector, Flask, CouchDB, Swagger" },
   { label: "RAG & evals", value: "RAG pipelines, LLM evals, Langfuse, semantic search, prompt engineering, MCP" },

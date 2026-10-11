@@ -11,13 +11,13 @@ export const experience: Job[] = [
     note: "Promoted from SDE II (Jun 2024) to Senior (Apr 2025), same team",
     years: "2024 — 2026",
     bullets: [
-      "Owned the React frontend architecture and built backend APIs for core security products, **findings and vulnerability management**, using **FastAPI, Python and PostgreSQL**. Made technical calls and coordinated releases as the senior engineer on the pod.",
-      "Rearchitected the app around a **UI design system spanning multiple modules**, the layer the rest of the pod built against every sprint.",
-      "Added **virtualization and a reusable real-time table** for live, data-heavy views, then used code splitting to cut initial bundle size and load time.",
-      "Built the dashboards that surface security findings and incidents, so customer teams could resolve issues faster.",
-      "Integrated PostHog and worked with PMs and designers to add business-level signals and analytics.",
+      "Led the React frontend and built backend APIs with **FastAPI and PostgreSQL** for security findings and vulnerability management.",
+      "Built a visual rule builder for compliance workflows so teams could automate security checks.",
+      "Streamed live security data over **WebSockets and SSE**, using virtualized tables to keep the UI fast.",
+      "Built a shared **UI design system** and used code splitting to cut initial load time.",
+      "Set up PostHog tracking and worked with PMs to make incident triage faster.",
     ],
-    chips: ["FastAPI", "Python", "PostgreSQL", "React", "TypeScript", "Design system", "Virtualization", "Nx", "PostHog"],
+    chips: ["React", "TypeScript", "WebSockets", "SSE", "FastAPI", "Python", "PostgreSQL", "Design system", "Virtualization"],
   },
   {
     company: "Kami Vision",
@@ -31,20 +31,23 @@ export const experience: Job[] = [
       {
         label: "Kami Cloud · B2C",
         bullets: [
-          "Rewrote the Vue.js app in React and built a reusable design system under it with **Storybook and custom theming**.",
-          "Added responsive layouts, internationalization, code splitting, lazy loading and **Stripe payments with backend webhook handling**, with integration tests behind them.",
+          "Rewrote the Vue app in **React and TypeScript**, with a shared design system in Storybook.",
+          "Added live camera feeds with **WebRTC**, handling video playback and automatic reconnects.",
+          "Used **WebSockets** for camera controls and **SSE** for real-time motion alerts.",
+          "Integrated Stripe subscriptions with webhook handling, multi-language support, and tests.",
         ],
       },
       {
         label: "Internal Dashboard · B2B",
         bullets: [
-          "Built the org-facing dashboard in Next.js with SSR and SSG, plus TypeScript transformers that normalized inconsistent API responses into one shape.",
-          "Set up the shared design system and testing approach the internal teams onboarded onto.",
+          "Built a Next.js dashboard with a rule builder to set up camera alerts and workflows.",
+          "Wrote TypeScript transformers to turn messy API responses into clean client models.",
+          "Created the component library and testing setup used across internal teams.",
         ],
       },
     ],
     shift: ["Vue.js", "React"],
-    chips: ["React", "Next.js", "Node.js", "TypeScript", "Storybook", "Stripe", "i18n", "SSR / SSG"],
+    chips: ["React", "WebRTC", "WebSockets", "SSE", "TypeScript", "Next.js", "Storybook", "Stripe"],
   },
   {
     company: "Milky Way AI",

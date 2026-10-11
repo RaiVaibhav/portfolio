@@ -16,8 +16,8 @@ export const site = {
   facts: [
     { label: "Now", value: "Staff role" },
     { label: "Recently", value: "2 years at Scrut Automation" },
-    { label: "Stack", value: "React, Next.js, TypeScript, Python, FastAPI, Node.js, PostgreSQL" },
-    { label: "Focus", value: "Design systems, full stack, RAG & evals" },
+    { label: "Stack", value: "React, Next.js, TypeScript, WebSockets, WebRTC, FastAPI, PostgreSQL" },
+    { label: "Focus", value: "Real-time streaming, workflow engines, design systems" },
   ],
 
   headline: "I make big frontends and full-stack systems easier to work in.",

@@ -25,8 +25,8 @@ export default function Hero() {
           </p>
 
           <p className="sub">
-            7+ years across security, compliance, healthcare and edtech. React, Next.js, TypeScript, FastAPI.
-            Design systems, data-heavy interfaces, and the migrations that touch every screen in the product.
+            7+ years building enterprise SaaS and real-time systems. React, Next.js, TypeScript, FastAPI.
+            Design systems, live streaming interfaces (WebSockets, SSE, WebRTC), and workflow authoring engines.
           </p>
 
           <p className="status">
