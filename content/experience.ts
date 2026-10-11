@@ -11,7 +11,7 @@ export const experience: Job[] = [
     note: "Promoted from SDE II (Jun 2024) to Senior (Apr 2025), same team",
     years: "2024 — 2026",
     bullets: [
-      "Owned frontend architecture and built backend APIs across the core security products, **findings and vulnerability management**, using **FastAPI, Python and PostgreSQL**.",
+      "Owned the React frontend architecture and built backend APIs for core security products, **findings and vulnerability management**, using **FastAPI, Python and PostgreSQL**. Made technical calls and coordinated releases as the senior engineer on the pod.",
       "Rearchitected the app around a **UI design system spanning multiple modules**, the layer the rest of the pod built against every sprint.",
       "Added **virtualization and a reusable real-time table** for live, data-heavy views, then used code splitting to cut initial bundle size and load time.",
       "Built the dashboards that surface security findings and incidents, so customer teams could resolve issues faster.",

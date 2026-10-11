@@ -9,7 +9,7 @@ export default function Hero() {
           <div className="eyebrow mono">
             <span>Senior Software Engineer</span>
             <span className="sep">/</span>
-            <span>Frontend &amp; Full Stack</span>
+            <span>Frontend Architecture</span>
             <span className="sep">/</span>
             <span>Delhi, India</span>
           </div>
@@ -20,18 +20,18 @@ export default function Hero() {
           </h1>
 
           <p className="thesis">
-            I take complex frontends and full-stack systems and turn them into{" "}
+            I take frontends that have outgrown their architecture and turn them into{" "}
             <em>systems a whole team can build on.</em>
           </p>
 
           <p className="sub">
-            7+ years across security, compliance, healthcare and IoT. Mostly React, Next.js, TypeScript, FastAPI and PostgreSQL.
-            Design systems, data-heavy UI, solid backend APIs, and modern RAG pipelines with evals.
+            7+ years across security, compliance, healthcare and edtech. React, Next.js, TypeScript, FastAPI.
+            Design systems, data-heavy interfaces, and the migrations that touch every screen in the product.
           </p>
 
           <p className="status">
             <span className="dot" aria-hidden="true" />
-            <span>Open to senior and staff roles (Frontend &amp; Full Stack)</span>
+            <span>Staff role</span>
           </p>
 
           <div className="links">

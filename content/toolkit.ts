@@ -25,7 +25,7 @@ export const education: SpecRow[] = [
   },
   {
     label: "Right now",
-    value: "Going deep on **RAG pipelines, LLM evals and tool security over MCP** (like Bandhu and AgentGate), plus high-throughput data visualization in the browser.",
+    value: "Going deep on **agentic AI and RAG**, which is where AgentGate and Bandhu came from. What I actually want to know is what these systems need from a frontend, because that answer is still being worked out.",
   },
   {
     label: "Off the clock",

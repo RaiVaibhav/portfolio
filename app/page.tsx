@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
+import Thinking from "@/components/Thinking";
 import Work from "@/components/Work";
-import Focus from "@/components/Focus";
 import Projects from "@/components/Projects";
 import SpecList from "@/components/SpecList";
 import SiteHeader from "@/components/SiteHeader";
@@ -18,8 +18,8 @@ export default function Page() {
 
       <main id="main">
         <Hero />
+        <Thinking />
         <Work />
-        <Focus />
         <Projects />
         <SpecList id="toolkit" title="Toolkit" rows={toolkit} />
         <SpecList id="edu" title="Education, certificates &amp; current" rows={education} />

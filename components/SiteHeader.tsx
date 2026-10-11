@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 const LINKS = [
-  { href: "#work", label: "Work" },
-  { href: "#focus", label: "Focus" },
+  { href: "#thinking", label: "Thinking" },
+  { href: "#work", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#toolkit", label: "Toolkit" },
   { href: "#contact", label: "Contact" },

@@ -9,12 +9,12 @@ export const site = {
   email: "raivaibhav08@gmail.com",
   github: "https://github.com/RaiVaibhav",
   linkedin: "https://www.linkedin.com/in/raivaibhav08/",
-  status: "Open to senior and staff roles (Frontend & Full-Stack)",
+  status: "Staff role",
   resume: "/vaibhav-kumar-rai-resume.pdf",
 
   /** Short factual rows for the profile header. */
   facts: [
-    { label: "Now", value: "Open to senior & staff roles" },
+    { label: "Now", value: "Staff role" },
     { label: "Recently", value: "2 years at Scrut Automation" },
     { label: "Stack", value: "React, Next.js, TypeScript, Python, FastAPI, Node.js, PostgreSQL" },
     { label: "Focus", value: "Design systems, full stack, RAG & evals" },

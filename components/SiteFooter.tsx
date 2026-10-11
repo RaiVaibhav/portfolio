@@ -9,7 +9,7 @@ export default function SiteFooter() {
         <Reveal>
           <h2>Let&rsquo;s talk.</h2>
           <p>
-            If you need someone to lead a complex frontend, wire up the backend services under it, or set up RAG pipelines with evals, let&rsquo;s talk.
+            If your frontend has outgrown the architecture holding it up, that&rsquo;s the problem I like.
             Email is the fastest way to reach me.
           </p>
           <div className="links">

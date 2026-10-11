@@ -478,6 +478,89 @@ h1.name .l2 {
   }
 }
 
+/* ── thinking & mental models ─────────────────────────────────────────── */
+.thinking-item {
+  border-top: 1px solid var(--line-soft);
+  padding-block: 1.85rem;
+}
+.thinking-item:first-of-type {
+  border-top: 1px solid var(--line);
+}
+.thinking-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.thinking-item p {
+  color: var(--ink-2);
+  line-height: 1.68;
+  max-width: 64ch;
+  font-size: 1rem;
+}
+
+.thinking-num {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brass);
+  display: block;
+}
+
+.thinking-tag {
+  color: var(--ink-3);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.thinking-content h3 {
+  font-size: clamp(1.25rem, 1.12rem + 0.5vw, 1.6rem);
+  font-weight: 800;
+  margin-bottom: 0.85rem;
+}
+
+.thinking-content p {
+  color: var(--ink-2);
+  font-size: 1.02rem;
+  line-height: 1.68;
+  max-width: 64ch;
+  margin-bottom: 1.1rem;
+}
+
+.thinking-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  align-items: baseline;
+  background: var(--surface);
+  border-left: 2px solid var(--brass);
+  padding: 0.6rem 0.9rem;
+  border-radius: 2px;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  max-width: 64ch;
+}
+
+.thinking-proof .mono {
+  color: var(--brass);
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+.job-framing {
+  background: var(--surface);
+  border-left: 2px solid var(--brass);
+  padding: 0.75rem 1rem;
+  margin-block: 0.9rem 1.1rem;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: var(--ink);
+  max-width: 64ch;
+  border-radius: 2px;
+}
+
 /* ── focus / capabilities ──────────────────────────────────────────────── */
 .caps {
   display: grid;

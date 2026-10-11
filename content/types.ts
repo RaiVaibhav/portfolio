@@ -8,6 +8,7 @@ export type Job = {
   url?: string;
   urlLabel?: string;
   urlNote?: string;
+  framing?: string;
   bullets?: string[];
   groups?: { label: string; bullets: string[] }[];
   shift?: [string, string];

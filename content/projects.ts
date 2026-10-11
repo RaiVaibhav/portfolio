@@ -27,8 +27,8 @@ export const projects: Project[] = [
       { label: "Source", href: "https://github.com/RaiVaibhav/bandhu" },
     ],
     body: [
-      "A companion-first mental health check-in app for India. The idea is that it should feel like texting a friend, not opening a treatment tool. Built with an **agentic RAG pipeline** &mdash; FastAPI with async SQLAlchemy and Postgres/pgvector on the back, React 19, Vite, Tailwind v4 and shadcn/ui on the front, NVIDIA NIM and Langfuse for tracing and evals.",
-      "Anything safety-critical sits behind an **eval pipeline** to catch crisis language and test retrieval relevancy before it ships. The engineering docs cover the RAG pipeline design, the vector schema and the manual and automated eval cases.",
+      "A companion-first mental health check-in app for India. The idea is that it should feel like texting a friend, not opening a treatment tool. Built with FastAPI, Postgres/pgvector, React 19, Vite, Tailwind v4 and shadcn/ui, with NVIDIA NIM and Langfuse for tracing.",
+      "It's a prototype and I say so in the README. Anything safety-critical—crisis-language detection and clinical suggestions—sits behind an eval pipeline that tests retrieval and prompt outputs before it ships. The engineering docs cover the pipeline design, vector schema, and eval test cases.",
     ],
     chips: ["React 19", "FastAPI", "pgvector", "RAG", "LLM evals", "Langfuse", "Tailwind v4"],
   },
